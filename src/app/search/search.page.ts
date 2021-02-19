@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {Observable} from 'rxjs';
+import {HomeTripCardsModel} from '../shared/homeTripCards.model';
 
 @Component({
   selector: 'app-search',
@@ -9,7 +10,7 @@ import {Observable} from 'rxjs';
   styleUrls: ['./search.page.scss'],
 })
 export class SearchPage implements OnInit {
-  private homeTripCards;
+  public homeTripCards: Observable<Array<HomeTripCardsModel>>;
 
   constructor(private router: Router, public db: AngularFirestore) {
   }
@@ -22,6 +23,6 @@ export class SearchPage implements OnInit {
   }
 
   getAllhomeTripCards(): Observable<any> {
-    return this.db.collection<any>('homeTripCards').valueChanges();
+    return this.db.collection<HomeTripCardsModel>('homeTripCards').valueChanges();
   }
 }

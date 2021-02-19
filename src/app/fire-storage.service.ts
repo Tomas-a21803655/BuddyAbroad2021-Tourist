@@ -25,21 +25,4 @@ export class FireStorageService {
         this.unsubscribe.complete();
     }
 
-    public getAllTrips(): Observable<HomeTripCardsModel[]> {
-        return this.angularAuth.user
-            .pipe(takeUntil(this.unsubscribe),
-                switchMap(user => {
-                    return this.af.collection(FireStorageService.USERS_KEY).doc(user.uid)
-                        .collection<HomeTripCardsModel>(FireStorageService.TRIPS_KEY).valueChanges();
-                }));
-    }
-
-    public getUserTrips(targetUser): Observable<HomeTripCardsModel[]> {
-        return this.angularAuth.user
-            .pipe(takeUntil(this.unsubscribe),
-                switchMap(user => {
-                    return this.af.collection(FireStorageService.USERS_KEY).doc(targetUser)
-                        .collection<HomeTripCardsModel>(FireStorageService.TRIPS_KEY).valueChanges();
-                }));
-    }
 }
