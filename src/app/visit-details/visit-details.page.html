@@ -13,13 +13,11 @@
     <div style="padding: 3%">
 
         <div style="margin-bottom: 2%">
-            <ion-text style="font:Bold 25px 'Open Sans';color: #3D3D3D;">Wine Tour</ion-text>
+            <ion-text style="font:Bold 25px 'Open Sans';color: #3D3D3D;">{{trip?.name}}</ion-text>
         </div>
 
         <ion-text style="font:normal 15px 'Open Sans';color: #3D3D3D;">
-            Visit the oldest port wine cellar in Porto and taste the best wines of Portugal on
-            a wine tour of the city. Visit 2 typical wine houses and sample some of the wines of the Douro.
-            Pair a green wine with a selection of cheeses and smoked meats.
+            {{trip?.description}}
         </ion-text>
 
         <div style="margin-top: 5%">
@@ -31,8 +29,8 @@
                     <ion-col>Group size</ion-col>
                 </ion-row>
                 <ion-row style="text-align:center">
-                    <ion-col class="downCol">2 hours</ion-col>
-                    <ion-col class="downCol">Up to 6 participants</ion-col>
+                    <ion-col class="downCol">{{trip?.time}}</ion-col>
+                    <ion-col class="downCol">{{trip?.size}}</ion-col>
                 </ion-row>
             </ion-grid>
             <ion-grid style="width:100%;margin-top: 2%">
@@ -42,7 +40,7 @@
                 </ion-row>
                 <ion-row style="text-align:center">
                     <ion-col class="downCol">English, Portuguese, Spanish</ion-col>
-                    <ion-col class="downCol">Wine tastings and snacks Ticket to Port Wine Cellar</ion-col>
+                    <ion-col class="downCol">{{trip?.details}}</ion-col>
                 </ion-row>
             </ion-grid>
 
@@ -68,7 +66,7 @@
 <ion-footer>
     <ion-toolbar class="footerBar">
         <ion-title class="footerText" style="font:bold 15px 'Open Sans';color: #3D3D3D;">From
-            <span style="margin-right: 2%;margin-left: 2%;font:bold 20px 'Open Sans';color: #3D3D3D;">€39</span>
+            <span style="margin-right: 2%;margin-left: 2%;font:bold 20px 'Open Sans';color: #3D3D3D;">{{trip?.price}}</span>
             per person
         </ion-title>
         <ion-buttons slot="end">

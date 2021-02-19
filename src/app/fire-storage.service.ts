@@ -25,4 +25,10 @@ export class FireStorageService {
         this.unsubscribe.complete();
     }
 
+
+    getTripDetail(tripId: string,userId): Observable<HomeTripCardsModel> {
+        return this.af.collection(FireStorageService.USERS_KEY).doc(userId)
+            .collection<HomeTripCardsModel>(FireStorageService.TRIPS_KEY).doc<HomeTripCardsModel>(tripId).valueChanges();
+    }
+
 }

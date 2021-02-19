@@ -23,7 +23,7 @@ const routes: Routes = [
     loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
   },
   {
-    path: 'visit-details',
+      path: 'visit-details/:id',
     loadChildren: () => import('./visit-details/visit-details.module').then( m => m.VisitDetailsPageModule)
   },
   {
