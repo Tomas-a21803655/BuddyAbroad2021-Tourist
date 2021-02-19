@@ -3,7 +3,7 @@
         <div class="container">
 
             <div class="container__image">
-                <img  src="assets/logoandname.png">
+                <img src="assets/logoandname.png">
             </div>
 
             <div class="container__text">
@@ -18,29 +18,29 @@
         </ion-buttons>
     </ion-toolbar>
 </ion-header>
-
 <ion-content>
-<div class="topTrip">
-    <span class="topTrip-header">Top Visits Today</span>
-    <div class="topTrip-cards">
-        <img src="/assets/toptrip1.jpg" class="topTrip-image">
-        <img src="/assets/toptrip2.jpg" class="topTrip-image">
-        <img src="/assets/toptrip3.jpg" class="topTrip-image">
+    <div class="topTrip">
+        <span class="topTrip-header">Top Visits Today</span>
+        <div class="topTrip-cards">
+            <img src="/assets/toptrip1.jpg" class="topTrip-image">
+            <img src="/assets/toptrip2.jpg" class="topTrip-image">
+            <img src="/assets/toptrip3.jpg" class="topTrip-image">
+        </div>
     </div>
-</div>
 
-<div style="background-color: #F0F0F0">
-    <ion-buttons>
-        <span class="visitsNear-header">Visits Near You</span>
-        <ion-button size="small" slot="end">
-            <span style="color: #FEAA00;font: normal 15px 'Open Sans';text-align: right;">filter</span>
-        </ion-button>
-    </ion-buttons>
-</div>
+    <div style="background-color: #F0F0F0">
+        <ion-buttons>
+            <span class="visitsNear-header">Visits Near You</span>
+            <ion-button size="small" slot="end">
+                <span style="color: #FEAA00;font: normal 15px 'Open Sans';text-align: right;">filter</span>
+            </ion-button>
+        </ion-buttons>
+    </div>
 
     <div class="visitsNear">
         <ion-list>
-            <ion-item *ngFor="let homeTripCard of homeTripCards" lines="none" color="white" (click)="openVisitDetailsPage()">
+            <ion-item *ngFor="let homeTripCard of homeTripCards | async; index as i"
+                      routerLink="/visit-details/{{homeTripCard.id}}" lines="none" color="white">
                 <ion-img class="visitsNear-image" [src]="homeTripCard.image"></ion-img>
                 <ion-label>
                     <h2 style="font: bold 15px Open Sans;color: #3D3D3D;">{{homeTripCard.name}}</h2>

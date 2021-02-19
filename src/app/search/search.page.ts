@@ -17,6 +17,7 @@ export class SearchPage implements OnInit {
   ngOnInit() {
     this.getAllhomeTripCards().subscribe((data) => {
       this.homeTripCards = data;
+      console.log(data);
     });
   }
 
