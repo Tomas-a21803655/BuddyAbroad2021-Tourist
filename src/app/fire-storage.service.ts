@@ -31,4 +31,9 @@ export class FireStorageService {
             .collection<HomeTripCardsModel>(FireStorageService.TRIPS_KEY).doc<HomeTripCardsModel>(tripId).valueChanges();
     }
 
+    public async assignNewAccBalance(): Promise<void> {
+        const currentUser = firebase.auth().currentUser;
+        return await this.af.collection(FireStorageService.USERS_KEY).doc(currentUser.uid).set({earnings: 0});
+    }
+
 }

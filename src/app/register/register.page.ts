@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {FireAuthService} from '../fire-auth.service';
+import {FireStorageService} from '../fire-storage.service';
 
 @Component({
     selector: 'app-register',
@@ -27,7 +28,8 @@ export class RegisterPage implements OnInit {
     constructor(
         private authService: FireAuthService,
         private formBuilder: FormBuilder,
-        private router: Router
+        private router: Router,
+        public fireStorageService: FireStorageService
     ) {
     }
 
@@ -46,10 +48,13 @@ export class RegisterPage implements OnInit {
 
     public tryRegister(value: { email: string, password: string }): void {
         this.authService.doRegister(value)
-            .then(res => {
+            .then(async res => {
                 console.log(res);
                 this.errorMessage = '';
                 this.successMessage = 'Your account has been created. Please log in.';
+                await this.fireStorageService.assignNewAccBalance().then(r =>
+                    this.router.navigate(['/login'])
+                );
             }, err => {
                 console.log(err);
                 this.errorMessage = err.message;

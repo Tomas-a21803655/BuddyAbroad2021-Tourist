@@ -3,7 +3,7 @@
         <div class="container">
 
             <div class="container__image">
-                <img  src="assets/logoandname.png">
+                <img src="assets/logoandname.png">
             </div>
 
             <div class="container__text">
@@ -19,7 +19,9 @@
     </ion-toolbar>
 </ion-header>
 
-<ion-input placeholder="Search for a visit"><ion-icon class="icon-search" name="search"></ion-icon></ion-input>
+<ion-input placeholder="Search for a visit">
+    <ion-icon class="icon-search" name="search"></ion-icon>
+</ion-input>
 
 <ion-slides>
     <ion-slide>
@@ -41,7 +43,8 @@
 <ion-content>
     <div class="visitsNear">
         <ion-list>
-            <ion-item *ngFor="let homeTripCard of allHomeTripCards" lines="none" color="white">
+            <ion-item *ngFor="let homeTripCard of allHomeTripCards" routerLink="/visit-details/{{homeTripCard.id}}"
+                      lines="none" color="white">
                 <ion-img class="visitsNear-image" [src]="homeTripCard.image"></ion-img>
                 <ion-label>
                     <h2 style="font: bold 15px Open Sans;color: #3D3D3D;">{{homeTripCard.name}}</h2>
