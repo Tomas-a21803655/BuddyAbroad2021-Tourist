@@ -52,7 +52,7 @@ export class RegisterPage implements OnInit {
                 console.log(res);
                 this.errorMessage = '';
                 this.successMessage = 'Your account has been created. Please log in.';
-                await this.fireStorageService.assignNewAccBalance().then(r =>
+                await this.fireStorageService.assignAccInfo().then(r =>
                     this.router.navigate(['/login'])
                 );
             }, err => {

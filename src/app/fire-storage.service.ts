@@ -31,9 +31,26 @@ export class FireStorageService {
             .collection<HomeTripCardsModel>(FireStorageService.TRIPS_KEY).doc<HomeTripCardsModel>(tripId).valueChanges();
     }
 
-    public async assignNewAccBalance(): Promise<void> {
+    public async assignAccInfo(): Promise<void> {
         const currentUser = firebase.auth().currentUser;
-        return await this.af.collection(FireStorageService.USERS_KEY).doc(currentUser.uid).set({earnings: 0});
+        return await this.af.collection(FireStorageService.USERS_KEY).doc(currentUser.uid).set({
+            image: 'assets/mockprofile.jpg',
+            rating: 0,
+            home: 'Where do you live?',
+            name: 'First and Last Name',
+            description: 'Tell the world about yourself!',
+            languages: 'What languages do you speak?',
+            earnings: 0,
+        });
     }
 
+    public getUserDocInfo(): Observable<any> {
+        const currentUser = firebase.auth().currentUser;
+        return this.af.collection(FireStorageService.USERS_KEY).doc(currentUser.uid).valueChanges();
+    }
+
+    public async createProfile(profile): Promise<void> {
+        const currentUser = firebase.auth().currentUser;
+        return await this.af.collection(FireStorageService.USERS_KEY).doc(currentUser.uid).update(profile);
+    }
 }
