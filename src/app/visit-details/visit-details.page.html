@@ -50,15 +50,18 @@
             <ion-text style="font: normal 500 20px OpenSans-Regular;color: #3D3D3D;">Your Buddy</ion-text>
         </div>
 
-        <span class="a">
-          <ion-avatar>
-          <img src="/assets/mockprofile.jpg">
-          </ion-avatar>
-      </span>
-        <span class="a">
-       <ion-text style="font: normal 600 22px OpenSans-Regular;color: #3D3D3D;padding: 2%">Ana</ion-text>
-    </span>
-
+        <ion-item lines="none">
+            <ion-avatar style="width: 50px;height: 50px" slot="start">
+                <img src="{{this.userImage}}">
+            </ion-avatar>
+            <ion-label style="color: #3D3D3D;padding: 2%">
+                <h3 style="font: normal 600 18px OpenSans-Regular;">{{this.userName}}<span
+                        style="font: normal 18px OpenSans-Regular;"> {{this.userRating}}</span>
+                    <ion-icon style="color: #FEAA00" name="star"></ion-icon>
+                </h3>
+                <p style="font: normal 14px OpenSans-Regular">{{this.userDescription}}</p>
+            </ion-label>
+        </ion-item>
 
     </div>
 </ion-content>
@@ -66,11 +69,13 @@
 <ion-footer>
     <ion-toolbar class="footerBar">
         <ion-title class="footerText" style="font:bold 15px OpenSans-Bold;color: #3D3D3D;">From
-            <span style="margin-right: 2%;margin-left: 2%;font:bold 20px OpenSans-Bold;color: #3D3D3D;">{{trip?.price}}</span>
+            <span style="margin-right: 2%;margin-left: 2%;font:bold 20px OpenSans-Bold;color: #3D3D3D;">{{trip?.price}}
+                €</span>
             per person
         </ion-title>
         <ion-buttons slot="end">
-            <ion-button style="background-color: #FEAA00;border-radius: 24px;width: 165px;height: 40px;" (click)="openPlanVisitPage()">
+            <ion-button style="background-color: #FEAA00;border-radius: 24px;width: 165px;height: 40px;"
+                        (click)="openPlanVisitPage()">
                 <span style="font:bold 20px OpenSans-Bold;color: #ffffff;text-transform:none;">Book Now</span>
             </ion-button>
         </ion-buttons>

@@ -8,6 +8,7 @@ export class HomeTripCardsModel {
     public rating?: number;
     public details?: string;
     public size?: number;
+    public createdBy?: any;
 
 
 
@@ -21,5 +22,6 @@ export class HomeTripCardsModel {
         this.rating = homeTripCardsModel ? homeTripCardsModel.rating : null;
         this.details = homeTripCardsModel ? homeTripCardsModel.details : null
         this.size = homeTripCardsModel ? homeTripCardsModel.size : null;
+        this.createdBy = homeTripCardsModel ? homeTripCardsModel.createdBy : null;
     }
 }

@@ -35,7 +35,6 @@ export class ProfilePage implements OnInit {
       this.userRating = data.rating;
       this.userImage = data.image;
     });
-
   }
 
 }
