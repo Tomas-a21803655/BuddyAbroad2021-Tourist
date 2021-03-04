@@ -7,7 +7,7 @@
             </div>
 
             <div class="container__text">
-                <ion-title class="ion-text-center" style="font:bold 23px 'Open Sans';color: #3D3D3D;"></ion-title>
+                <ion-title class="ion-text-center" style="font:bold 23px OpenSans-Bold;color: #3D3D3D;"></ion-title>
             </div>
         </div>
 
@@ -32,7 +32,7 @@
         <ion-buttons>
             <span class="visitsNear-header">Visits Near You</span>
             <ion-button size="small" slot="end">
-                <span style="color: #FEAA00;font: normal 15px 'Open Sans';text-align: right;">filter</span>
+                <span style="color: #FEAA00;font: normal 15px OpenSans-Regular;text-align: right;">filter</span>
             </ion-button>
         </ion-buttons>
     </div>
@@ -43,8 +43,8 @@
                       routerLink="/visit-details/{{homeTripCard.id}}" lines="none" color="white">
                 <ion-img class="visitsNear-image" [src]="homeTripCard.image"></ion-img>
                 <ion-label>
-                    <h2 style="font: bold 15px Open Sans;color: #3D3D3D;">{{homeTripCard.name}}</h2>
-                    <p style="font: normal 14px Open Sans;color: #3D3D3D;">{{homeTripCard.description}}</p>
+                    <h2 style="font: bold 15px OpenSans-Bold;color: #3D3D3D;">{{homeTripCard.name}}</h2>
+                    <p style="font: normal 14px OpenSans-Regular;color: #3D3D3D;">{{homeTripCard.description}}</p>
                     <p>
                         <ion-chip>
                             <ion-icon name="wallet-outline"></ion-icon>

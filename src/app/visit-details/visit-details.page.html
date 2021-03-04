@@ -13,15 +13,15 @@
     <div style="padding: 3%">
 
         <div style="margin-bottom: 2%">
-            <ion-text style="font:Bold 25px 'Open Sans';color: #3D3D3D;">{{trip?.name}}</ion-text>
+            <ion-text style="font:Bold 25px OpenSans-Bold;color: #3D3D3D;">{{trip?.name}}</ion-text>
         </div>
 
-        <ion-text style="font:normal 15px 'Open Sans';color: #3D3D3D;">
+        <ion-text style="font:normal 15px OpenSans-Regular;color: #3D3D3D;">
             {{trip?.description}}
         </ion-text>
 
         <div style="margin-top: 5%">
-            <ion-text style="font: normal 500 20px Open Sans;color: #3D3D3D;">About this visit:</ion-text>
+            <ion-text style="font: normal 500 20px OpenSans-Regular;color: #3D3D3D;">About this visit:</ion-text>
 
             <ion-grid style="width:100%;margin-top: 2%">
                 <ion-row style="position: center">
@@ -47,7 +47,7 @@
         </div>
 
         <div style="margin-top: 5%">
-            <ion-text style="font: normal 500 20px Open Sans;color: #3D3D3D;">Your Buddy</ion-text>
+            <ion-text style="font: normal 500 20px OpenSans-Regular;color: #3D3D3D;">Your Buddy</ion-text>
         </div>
 
         <span class="a">
@@ -56,7 +56,7 @@
           </ion-avatar>
       </span>
         <span class="a">
-       <ion-text style="font: normal 600 22px Open Sans;color: #3D3D3D;padding: 2%">Ana</ion-text>
+       <ion-text style="font: normal 600 22px OpenSans-Regular;color: #3D3D3D;padding: 2%">Ana</ion-text>
     </span>
 
 
@@ -65,13 +65,13 @@
 
 <ion-footer>
     <ion-toolbar class="footerBar">
-        <ion-title class="footerText" style="font:bold 15px 'Open Sans';color: #3D3D3D;">From
-            <span style="margin-right: 2%;margin-left: 2%;font:bold 20px 'Open Sans';color: #3D3D3D;">{{trip?.price}}</span>
+        <ion-title class="footerText" style="font:bold 15px OpenSans-Bold;color: #3D3D3D;">From
+            <span style="margin-right: 2%;margin-left: 2%;font:bold 20px OpenSans-Bold;color: #3D3D3D;">{{trip?.price}}</span>
             per person
         </ion-title>
         <ion-buttons slot="end">
             <ion-button style="background-color: #FEAA00;border-radius: 24px;width: 165px;height: 40px;" (click)="openPlanVisitPage()">
-                <span style="font:bold 20px 'Open Sans';color: #ffffff;text-transform:none;">Book Now</span>
+                <span style="font:bold 20px OpenSans-Bold;color: #ffffff;text-transform:none;">Book Now</span>
             </ion-button>
         </ion-buttons>
     </ion-toolbar>
