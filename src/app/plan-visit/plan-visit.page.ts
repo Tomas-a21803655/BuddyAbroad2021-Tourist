@@ -53,17 +53,13 @@ export class PlanVisitPage implements OnInit {
         };
         await this.fireStorageService.createDesiredTrip(desiredTrip).then(
             () => {
-                this.router.navigate(['/buy-visit']);
+                this.router.navigate(['/buy-visit/',this.targetTripId]);
             }
         );
     }
 
     goback() {
         this.navCtrl.pop();
-    }
-
-    public openBuyVisitPage(): void {
-        this.router.navigate(['/buy-visit']);
     }
 
 }

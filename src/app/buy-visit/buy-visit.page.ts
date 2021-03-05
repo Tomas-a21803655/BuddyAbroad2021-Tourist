@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {NavController} from '@ionic/angular';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-buy-visit',
@@ -8,9 +9,11 @@ import {NavController} from '@ionic/angular';
 })
 export class BuyVisitPage implements OnInit {
 
-  constructor(private navCtrl:NavController) { }
+  constructor(private navCtrl:NavController,private route: ActivatedRoute,) { }
 
   ngOnInit() {
+    const tripId: string = this.route.snapshot.paramMap.get('id');
+
   }
 
   goback() {

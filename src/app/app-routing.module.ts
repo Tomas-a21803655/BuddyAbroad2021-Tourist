@@ -27,7 +27,7 @@ const routes: Routes = [
         loadChildren: () => import('./visit-details/visit-details.module').then(m => m.VisitDetailsPageModule)
     },
     {
-        path: 'buy-visit',
+        path: 'buy-visit/:id',
         loadChildren: () => import('./buy-visit/buy-visit.module').then(m => m.BuyVisitPageModule)
     },
     {
