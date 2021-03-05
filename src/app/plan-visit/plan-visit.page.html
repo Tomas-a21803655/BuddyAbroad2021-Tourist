@@ -1,83 +1,91 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar style="color:#F0F0F0;">
-    <div class="container">
-      <div class="container__image">
-        <ion-buttons slot="start">
-          <ion-button (click)="goback()">
-            <ion-icon name="close-circle" class="close"></ion-icon>
-          </ion-button>
-        </ion-buttons>
-      </div>
+    <ion-toolbar style="color:#F0F0F0;">
+        <div class="container">
+            <div class="container__image">
+                <ion-buttons slot="start">
+                    <ion-button (click)="goback()">
+                        <ion-icon name="close-circle" class="close"></ion-icon>
+                    </ion-button>
+                </ion-buttons>
+            </div>
 
-      <div class="container__text">
-        <ion-title class="ion-text-center" style="font:bold 22px OpenSans-Bold;color: #3D3D3D;">Plan your visit
-        </ion-title>
-      </div>
-    </div>
-  </ion-toolbar>
+            <div class="container__text">
+                <ion-title class="ion-text-center" style="font:bold 22px OpenSans-Bold;color: #3D3D3D;">Plan your visit
+                </ion-title>
+            </div>
+        </div>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <div style="padding: 3%">
-  <ion-item>
-    <ion-label>Date</ion-label>
-    <ion-datetime min="2021" max="2025"  placeholder="Select Date"></ion-datetime>
-  </ion-item>
-  <ion-item>
-    <ion-label>Starting time</ion-label>
-    <ion-datetime display-format="h:mm A" picker-format="HH:mm" placeholder="Select Time"></ion-datetime>
-  </ion-item>
+    <div style="padding: 3%">
+        <form [formGroup]="validationsForm">
+            <ion-item>
+                <ion-label>Date</ion-label>
+                <ion-datetime formControlName="desiredDate" min="2021" max="2025"
+                              placeholder="Select Date"></ion-datetime>
+            </ion-item>
+            <ion-item>
+                <ion-label>Starting time</ion-label>
+                <ion-datetime formControlName="desiredTime" display-format="h:mm A" picker-format="HH:mm"
+                              placeholder="Select Time"></ion-datetime>
+            </ion-item>
 
-  <div style="margin-top: 5%">
-    <ion-text style="font: normal 500 20px OpenSans-Regular;color: #3D3D3D;">Details:</ion-text>
+            <div style="margin-top: 5%">
+                <ion-text style="font: normal 500 20px OpenSans-Regular;color: #3D3D3D;">Details:</ion-text>
 
-    <ion-grid style="width:100%;margin-top: 2%">
-      <ion-row style="position: center">
-        <ion-col>Participants</ion-col>
-        <ion-col>Language</ion-col>
-      </ion-row>
-      <ion-row style="text-align:center">
-        <ion-col class="downCol">
-          <ion-item>
-            <ion-label></ion-label>
-            <ion-input id="participants" placeholder="Participants" type="number"></ion-input>
-          </ion-item>
-        </ion-col>
-        <ion-col class="downCol">
-          <ion-item>
-            <ion-select placeholder="Select a Language" interface="popover">
-              <ion-select-option value="pete">PT</ion-select-option>
-              <ion-select-option value="ingliii">ING</ion-select-option>
-            </ion-select>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+                <ion-grid style="width:100%;margin-top: 2%">
+                    <ion-row style="position: center">
+                        <ion-col>Participants</ion-col>
+                        <ion-col>Language</ion-col>
+                    </ion-row>
+                    <ion-row style="text-align:center">
+                        <ion-col class="downCol">
+                            <ion-item>
+                                <ion-label></ion-label>
+                                <ion-input formControlName="desiredParticipants" placeholder="Participants"
+                                           type="number"></ion-input>
+                            </ion-item>
+                        </ion-col>
+                        <ion-col class="downCol">
+                            <ion-item>
+                                <ion-select formControlName="desiredLanguage" placeholder="Select a Language"
+                                            interface="popover">
+                                    <ion-select-option value="pete">PT</ion-select-option>
+                                    <ion-select-option value="ingliii">ING</ion-select-option>
+                                </ion-select>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
+                </ion-grid>
 
 
-  </div></div>
+            </div>
+        </form>
+    </div>
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar class="footerBar">
+    <ion-toolbar class="footerBar">
 
-    <ion-title class="footerText">
-      <span style="margin-right: 2%;margin-left: 2%;font:bold 20px OpenSans-Bold;color: #3D3D3D;">Price breakdown</span>
-    </ion-title>
+        <ion-title class="footerText">
+            <span style="margin-right: 2%;margin-left: 2%;font:bold 20px OpenSans-Bold;color: #3D3D3D;">Price breakdown</span>
+        </ion-title>
 
-    <ion-title class="footerText">
-      <span style="margin-right: 2%;margin-left: 2%;font:normal 20px OpenSans-Regular;color: #3D3D3D;">Adult X x € XX</span>
-    </ion-title>
+        <ion-title class="footerText">
+            <span style="margin-right: 2%;margin-left: 2%;font:normal 20px OpenSans-Regular;color: #3D3D3D;">Adult X x € XX</span>
+        </ion-title>
 
-    <ion-title class="footerText">
-      <span style="margin-right: 2%;margin-left: 2%;font:normal 20px OpenSans-Regular;color: #3D3D3D;">Order Total</span>
-    </ion-title>
+        <ion-title class="footerText">
+            <span style="margin-right: 2%;margin-left: 2%;font:normal 20px OpenSans-Regular;color: #3D3D3D;">Order Total</span>
+        </ion-title>
 
-    <ion-buttons>
-      <ion-button
-              style="background-color: #FEAA00;border-radius: 24px;width: 100%;height: 40px;margin-bottom: 2%" (click)="openBuyVisitPage()">
-        <span style="font:bold 20px OpenSans-Bold;color: #ffffff;text-transform:none;">Check Out</span>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
+        <ion-buttons>
+            <ion-button
+                    style="background-color: #FEAA00;border-radius: 24px;width: 100%;height: 40px;margin-bottom: 2%"
+                    (click)="onSubmit(validationsForm.value)">
+                <span style="font:bold 20px OpenSans-Bold;color: #ffffff;text-transform:none;">Check Out</span>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-footer>

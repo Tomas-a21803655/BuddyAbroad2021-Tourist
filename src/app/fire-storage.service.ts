@@ -26,7 +26,7 @@ export class FireStorageService {
     }
 
 
-    getTripDetail(tripId: string,userId): Observable<HomeTripCardsModel> {
+    getTripDetail(tripId: string, userId): Observable<HomeTripCardsModel> {
         return this.af.collection(FireStorageService.USERS_KEY).doc(userId)
             .collection<HomeTripCardsModel>(FireStorageService.TRIPS_KEY).doc<HomeTripCardsModel>(tripId).valueChanges();
     }
@@ -57,5 +57,11 @@ export class FireStorageService {
     public async createProfile(profile): Promise<void> {
         const currentUser = firebase.auth().currentUser;
         return await this.af.collection(FireStorageService.USERS_KEY).doc(currentUser.uid).update(profile);
+    }
+
+    public async createDesiredTrip(desiredTrip): Promise<void> {
+        const currentUser = firebase.auth().currentUser;
+        return await this.af.collection(FireStorageService.USERS_KEY).doc(currentUser.uid).collection('unverifiedTrip')
+            .doc('unverified').update(desiredTrip);
     }
 }
