@@ -24,11 +24,10 @@
 
         <div class="orderDetails" style="margin: 2%;padding: 2%">
             <ion-item color="transparent" style="background: transparent" lines="none">
-                <img class="visitsNear-image" src="/assets/toptrip3.jpg">
+                <img class="visitsNear-image" src="{{trip?.image}}">
                 <ion-label>
-                    <h2 style="font: bold 15px OpenSans-Bold;color: #3D3D3D;">Wine Tour</h2>
-                    <p style="font: normal 14px OpenSans-Regular;color: #3D3D3D;">Visit 2 typical wine houses and sampl some of
-                        the wines of the Douro.</p>
+                    <h2 style="font: bold 15px OpenSans-Bold;color: #3D3D3D;">{{trip?.name}}</h2>
+                    <p style="font: normal 14px OpenSans-Regular;color: #3D3D3D;">{{trip?.description}}</p>
                 </ion-label>
             </ion-item>
         </div>
@@ -39,8 +38,7 @@
         <p>
             <ion-text style="margin-left: 2%;font: normal 600 20px OpenSans-Regular;color: #3D3D3D;">Booked Date</ion-text>
         </p>
-        <ion-text style="margin-left: 3%;font: normal 600 15px OpenSans-Regular;color: #3D3D3D;">Tuesday, July 12, 2021, 16:15
-            PM, (GMT)
+        <ion-text style="margin-left: 3%;font: normal 600 15px OpenSans-Regular;color: #3D3D3D;">{{this.desiredDate}}, {{this.desiredTime}}
         </ion-text>
     </div>
 
@@ -48,12 +46,11 @@
         <p>
             <ion-text style="margin-left: 2%;font: normal 600 20px OpenSans-Regular;color: #3D3D3D;">Billing Address</ion-text>
         </p>
-        <ion-text style="margin-left: 3%;font: normal 600 15px OpenSans-Regular;color: #3D3D3D;">(530) 577-2760 984 Hilltop Dr,
-            Nevada(NV), 89705
+        <ion-text style="margin-left: 3%;font: normal 600 15px OpenSans-Regular;color: #3D3D3D;">XXX
         </ion-text>
     </div>
 
-    <div style="background: white;margin-top: 3%;padding-bottom: 3%;box-shadow: 0px 3px 6px #C2C2C2;">
+    <div style="background: white;margin-top: 3%;padding-bottom: 3%;box-shadow: 0px 3px 6px #C2C2C2;opacity: 50%">
         <p>
             <ion-text style="margin-left: 2%;font: normal 600 20px OpenSans-Regular;color: #3D3D3D;">Payment</ion-text>
         </p>
@@ -70,7 +67,7 @@
         </ion-title>
 
         <ion-title class="footerText">
-            <span style="margin-right: 2%;margin-left: 2%;font:normal 20px OpenSans-Regular;color: #3D3D3D;">Adult X x € XX</span>
+            <span style="margin-right: 2%;margin-left: 2%;font:normal 20px OpenSans-Regular;color: #3D3D3D;">Adult {{desiredParticipants}} x € XX</span>
         </ion-title>
 
         <ion-title class="footerText">
