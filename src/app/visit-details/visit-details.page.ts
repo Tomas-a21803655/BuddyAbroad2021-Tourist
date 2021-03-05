@@ -37,7 +37,7 @@ export class VisitDetailsPage implements OnInit {
                         if (element?.id === tripId) {
                             this.trip = element;
                             // after here
-                            this.fireStorageService.getUserDocInfo().subscribe((data) => {
+                            this.fireStorageService.getBuddyDocInfo(element?.createdBy).subscribe((data) => {
                                 this.userName = data.name;
                                 this.userDescription = data.description;
                                 this.userRating = data.rating;

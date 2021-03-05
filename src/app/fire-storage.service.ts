@@ -49,6 +49,11 @@ export class FireStorageService {
         return this.af.collection(FireStorageService.USERS_KEY).doc(currentUser.uid).valueChanges();
     }
 
+    public getBuddyDocInfo(uid): Observable<any> {
+        const currentUser = firebase.auth().currentUser;
+        return this.af.collection(FireStorageService.USERS_KEY).doc(uid).valueChanges();
+    }
+
     public async createProfile(profile): Promise<void> {
         const currentUser = firebase.auth().currentUser;
         return await this.af.collection(FireStorageService.USERS_KEY).doc(currentUser.uid).update(profile);
