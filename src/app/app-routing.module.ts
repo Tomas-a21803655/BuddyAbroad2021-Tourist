@@ -14,30 +14,30 @@ const routes: Routes = [
         path: 'register',
         loadChildren: () => import('./register/register.module').then(m => m.RegisterPageModule)
     },
-  {
-    path: 'settings',
-    loadChildren: () => import('./settings/settings.module').then( m => m.SettingsPageModule)
-  },
-  {
-    path: 'profile',
-    loadChildren: () => import('./profile/profile.module').then( m => m.ProfilePageModule)
-  },
-  {
-      path: 'visit-details/:id',
-    loadChildren: () => import('./visit-details/visit-details.module').then( m => m.VisitDetailsPageModule)
-  },
-  {
-    path: 'buy-visit',
-    loadChildren: () => import('./buy-visit/buy-visit.module').then( m => m.BuyVisitPageModule)
-  },
-  {
-    path: 'plan-visit',
-    loadChildren: () => import('./plan-visit/plan-visit.module').then( m => m.PlanVisitPageModule)
-  },
-  {
-    path: 'profile-creation',
-    loadChildren: () => import('./profile-creation/profile-creation.module').then( m => m.ProfileCreationPageModule)
-  },
+    {
+        path: 'settings',
+        loadChildren: () => import('./settings/settings.module').then(m => m.SettingsPageModule)
+    },
+    {
+        path: 'profile',
+        loadChildren: () => import('./profile/profile.module').then(m => m.ProfilePageModule)
+    },
+    {
+        path: 'visit-details/:id',
+        loadChildren: () => import('./visit-details/visit-details.module').then(m => m.VisitDetailsPageModule)
+    },
+    {
+        path: 'buy-visit',
+        loadChildren: () => import('./buy-visit/buy-visit.module').then(m => m.BuyVisitPageModule)
+    },
+    {
+        path: 'plan-visit/:id',
+        loadChildren: () => import('./plan-visit/plan-visit.module').then(m => m.PlanVisitPageModule)
+    },
+    {
+        path: 'profile-creation',
+        loadChildren: () => import('./profile-creation/profile-creation.module').then(m => m.ProfileCreationPageModule)
+    },
 ];
 
 @NgModule({

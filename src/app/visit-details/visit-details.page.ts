@@ -53,8 +53,4 @@ export class VisitDetailsPage implements OnInit {
         this.navCtrl.pop();
     }
 
-    public openPlanVisitPage(): void {
-        this.router.navigate(['/plan-visit']);
-    }
-
 }
