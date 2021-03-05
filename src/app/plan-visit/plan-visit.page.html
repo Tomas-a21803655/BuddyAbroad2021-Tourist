@@ -18,14 +18,44 @@
 </ion-header>
 
 <ion-content>
+  <div style="padding: 3%">
   <ion-item>
     <ion-label>Date</ion-label>
-    <ion-datetime value="1990-02-19" placeholder="Select Date"></ion-datetime>
+    <ion-datetime min="2021" max="2025"  placeholder="Select Date"></ion-datetime>
   </ion-item>
   <ion-item>
-    <ion-label>Start Time</ion-label>
-    <ion-datetime display-format="h:mm A" picker-format="h:mm A" value="1990-02-19T07:43Z"></ion-datetime>
+    <ion-label>Starting time</ion-label>
+    <ion-datetime display-format="h:mm A" picker-format="HH:mm" placeholder="Select Time"></ion-datetime>
   </ion-item>
+
+  <div style="margin-top: 5%">
+    <ion-text style="font: normal 500 20px OpenSans-Regular;color: #3D3D3D;">Details:</ion-text>
+
+    <ion-grid style="width:100%;margin-top: 2%">
+      <ion-row style="position: center">
+        <ion-col>Participants</ion-col>
+        <ion-col>Language</ion-col>
+      </ion-row>
+      <ion-row style="text-align:center">
+        <ion-col class="downCol">
+          <ion-item>
+            <ion-label></ion-label>
+            <ion-input placeholder="Participants" type="number"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col class="downCol">
+          <ion-item>
+            <ion-select placeholder="Select a Language" interface="popover">
+              <ion-select-option value="nes">PT</ion-select-option>
+              <ion-select-option value="n64">ING</ion-select-option>
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+  </div></div>
 </ion-content>
 
 <ion-footer>

@@ -19,6 +19,7 @@ export class VisitDetailsPage implements OnInit {
     public userDescription;
     public userRating;
     public userImage;
+    public userLanguage;
 
 
     constructor(private router: Router, private navCtrl: NavController,
@@ -42,6 +43,7 @@ export class VisitDetailsPage implements OnInit {
                                 this.userDescription = data.description;
                                 this.userRating = data.rating;
                                 this.userImage = data.image;
+                                this.userLanguage = data.languages;
                             });
                         }
                     });
