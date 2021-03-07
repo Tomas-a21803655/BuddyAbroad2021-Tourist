@@ -5,6 +5,7 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import {AngularFirestore} from '@angular/fire/firestore';
 import firebase from 'firebase';
 import {HomeTripCardsModel} from './shared/homeTripCards.model';
+import {element} from 'protractor';
 
 @Injectable({
     providedIn: 'root'
@@ -64,4 +65,69 @@ export class FireStorageService {
         return await this.af.collection(FireStorageService.USERS_KEY).doc(currentUser.uid).collection('unverifiedTrip')
             .doc('unverified').update(desiredTrip);
     }
+
+    public async buyTrip(tripId): Promise<void> {
+        const currentUser = firebase.auth().currentUser;
+        const orderTripId = this.af.createId()
+        let trip: HomeTripCardsModel;
+        let trips: Observable<HomeTripCardsModel>;
+        let desiredTrip
+
+
+        this.af.collection('users').get()
+            .subscribe(querySnapshot => {
+                querySnapshot.forEach(doc => {
+                    trips = this.getTripDetail(tripId, doc.id);
+                    trips.forEach( (element: HomeTripCardsModel) => {
+                        if (element?.id === tripId) {
+                            trip = element;
+                            // here
+                            this.af.collection('users').doc(currentUser.uid).collection('unverifiedTrip').doc('unverified').valueChanges()
+                                .subscribe(async (data) => {
+                                    desiredTrip = data;
+                                    // here
+                                    const tripToSetBuddy = {
+                                        orderedTripId: tripId,
+                                        image: trip.image,
+                                        name: trip.name,
+                                        description: trip.description,
+                                        duration: trip.time,
+                                        date: desiredTrip.desiredDate.split('T', 1), // fix this.
+                                        time: desiredTrip.desiredTime.substring(11, 16),
+                                        participants: desiredTrip.desiredParticipants,
+                                        language: desiredTrip.desiredLanguage,
+                                        orderedBy: currentUser.uid,
+                                    };
+                                    // here
+                                    // await add active ao user tbm
+                                    // abaixo add ao buddy
+                                    return await this.af.collection(FireStorageService.USERS_KEY).doc(trip.createdBy)
+                                        .collection('buddyScheduledTrips').doc(orderTripId).set(tripToSetBuddy);
+                                });
+
+                        }
+                    });
+                });
+            });
+    }
 }
+
+// this.db.collection('users').get()
+//             .subscribe(querySnapshot => {
+//                 querySnapshot.forEach(doc => {
+//                     this.trips = this.fireStorageService.getTripDetail(tripId, doc.id);
+//                     this.trips.forEach((element: HomeTripCardsModel) => {
+//                         if (element?.id === tripId) {
+//                             this.trip = element;
+//                             // after here
+//                             this.fireStorageService.getBuddyDocInfo(element?.createdBy).subscribe((data) => {
+//                                 this.userName = data.name;
+//                                 this.userDescription = data.description;
+//                                 this.userRating = data.rating;
+//                                 this.userImage = data.image;
+//                                 this.userLanguage = data.languages;
+//                             });
+//                         }
+//                     });
+//                 });
+//             });

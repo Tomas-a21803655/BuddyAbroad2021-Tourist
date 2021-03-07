@@ -38,6 +38,10 @@ const routes: Routes = [
         path: 'profile-creation',
         loadChildren: () => import('./profile-creation/profile-creation.module').then(m => m.ProfileCreationPageModule)
     },
+  {
+    path: 'trip-bought',
+    loadChildren: () => import('./trip-bought/trip-bought.module').then( m => m.TripBoughtPageModule)
+  },
 ];
 
 @NgModule({

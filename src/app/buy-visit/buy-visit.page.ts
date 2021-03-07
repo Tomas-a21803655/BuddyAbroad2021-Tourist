@@ -20,6 +20,10 @@ export class BuyVisitPage implements OnInit {
     public desiredTime;
     public desiredParticipants;
     public desiredLanguage;
+    public orderTotal;
+    public price;
+    public participants;
+    public savedTripId: string = this.route.snapshot.paramMap.get('id');
 
     constructor(private router: Router, private navCtrl: NavController,
                 public fireStorageService: FireStorageService,
@@ -36,21 +40,36 @@ export class BuyVisitPage implements OnInit {
                     this.trips.forEach((element: HomeTripCardsModel) => {
                         if (element?.id === tripId) {
                             this.trip = element;
+                            this.price = element?.price;
                         }
                     });
                 });
-            });
-        const currentUser = firebase.auth().currentUser;
-        this.db.collection('users').doc(currentUser.uid).collection('unverifiedTrip').doc('unverified').valueChanges()
-            .subscribe((data) => {
-                this.desiredDate = data.desiredDate.split('T',1);
-                this.desiredTime =  data.desiredTime.substring(11,16);
-                this.desiredParticipants = data.desiredParticipants;
-                this.desiredLanguage = data.desiredLanguage;
+                const currentUser = firebase.auth().currentUser;
+                this.db.collection('users').doc(currentUser.uid).collection('unverifiedTrip').doc('unverified').valueChanges()
+                    .subscribe((data) => {
+                        this.desiredDate = data.desiredDate.split('T', 1);
+                        this.desiredTime = data.desiredTime.substring(11, 16);
+                        this.desiredParticipants = data.desiredParticipants;
+                        this.desiredLanguage = data.desiredLanguage;
+                        this.participants = data.desiredParticipants;
+                    });
             });
     }
 
     goback() {
         this.navCtrl.pop();
+    }
+
+    async onSubmit() {
+        await this.fireStorageService.buyTrip(this.savedTripId).then(
+            () => {
+                this.router.navigate(['/tabs/home']);
+            }
+        );
+    }
+
+    public calculatePrice(): any {
+        // console.log('order total_', this.orderTotal, 'price _', this.price, 'parti', this.participants);
+        return this.orderTotal = this.price * this.participants;
     }
 }
