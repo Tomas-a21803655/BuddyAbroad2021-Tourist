@@ -78,7 +78,7 @@ export class FireStorageService {
             .subscribe(querySnapshot => {
                 querySnapshot.forEach(doc => {
                     trips = this.getTripDetail(tripId, doc.id);
-                    trips.forEach( (element: HomeTripCardsModel) => {
+                    trips.forEach((element: HomeTripCardsModel) => {
                         if (element?.id === tripId) {
                             trip = element;
                             // here
@@ -92,14 +92,30 @@ export class FireStorageService {
                                         name: trip.name,
                                         description: trip.description,
                                         duration: trip.time,
-                                        date: desiredTrip.desiredDate.split('T', 1), // fix this.
+                                        date: desiredTrip.desiredDate.substring(0, 10),
                                         time: desiredTrip.desiredTime.substring(11, 16),
                                         participants: desiredTrip.desiredParticipants,
                                         language: desiredTrip.desiredLanguage,
                                         orderedBy: currentUser.uid,
+                                        status: 'Booked'
+                                    };
+                                    const tripToSetTourist = {
+                                        orderedTripId: tripId,
+                                        image: trip.image,
+                                        name: trip.name,
+                                        description: trip.description,
+                                        duration: trip.time,
+                                        date: desiredTrip.desiredDate.substring(0, 10),
+                                        time: desiredTrip.desiredTime.substring(11, 16),
+                                        participants: desiredTrip.desiredParticipants,
+                                        language: desiredTrip.desiredLanguage,
+                                        buddyId: trip.createdBy,
+                                        status: 'Booked'
                                     };
                                     // here
                                     // await add active ao user tbm
+                                    await this.af.collection(FireStorageService.USERS_KEY).doc(currentUser.uid)
+                                        .collection('touristScheduledTrips').doc(orderTripId).set(tripToSetTourist);
                                     // abaixo add ao buddy
                                     return await this.af.collection(FireStorageService.USERS_KEY).doc(trip.createdBy)
                                         .collection('buddyScheduledTrips').doc(orderTripId).set(tripToSetBuddy);
