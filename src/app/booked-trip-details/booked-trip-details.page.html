@@ -21,26 +21,26 @@
         </ion-text>
 
         <div style="margin-top: 5%">
-            <ion-text style="font: normal 500 20px OpenSans-Regular;color: #3D3D3D;">About this visit:</ion-text>
+            <ion-text style="font: normal 500 20px OpenSans-Regular;color: #3D3D3D;">About your visit:</ion-text>
 
             <ion-grid style="width:100%;margin-top: 2%">
                 <ion-row style="position: center">
-                    <ion-col>Duration</ion-col>
-                    <ion-col>Group size</ion-col>
+                    <ion-col>Date</ion-col>
+                    <ion-col>Time</ion-col>
                 </ion-row>
                 <ion-row style="text-align:center">
+                    <ion-col class="downCol">{{trip?.date}}</ion-col>
                     <ion-col class="downCol">{{trip?.time}}</ion-col>
-                    <ion-col class="downCol">{{trip?.size}}</ion-col>
                 </ion-row>
             </ion-grid>
             <ion-grid style="width:100%;margin-top: 2%">
                 <ion-row>
-                    <ion-col>Buddy speaks</ion-col>
-                    <ion-col>Includes</ion-col>
+                    <ion-col>Status</ion-col>
+                    <ion-col>Participants</ion-col>
                 </ion-row>
                 <ion-row style="text-align:center">
-                    <ion-col class="downCol">{{this.userLanguage}}</ion-col>
-                    <ion-col class="downCol">{{trip?.details}}</ion-col>
+                    <ion-col class="downCol">{{trip?.status}}</ion-col>
+                    <ion-col class="downCol">{{trip?.participants}}</ion-col>
                 </ion-row>
             </ion-grid>
 
