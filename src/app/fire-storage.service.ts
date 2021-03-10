@@ -66,6 +66,15 @@ export class FireStorageService {
             .doc('unverified').update(desiredTrip);
     }
 
+    public getUserBookedTrips(): Observable<any>  {
+        return this.angularAuth.user
+            .pipe(takeUntil(this.unsubscribe),
+                switchMap(user => {
+                    return this.af.collection(FireStorageService.USERS_KEY).doc(user.uid)
+                        .collection('touristScheduledTrips').valueChanges();
+                }));
+    }
+
     public async buyTrip(tripId): Promise<void> {
         const currentUser = firebase.auth().currentUser;
         const orderTripId = this.af.createId()
