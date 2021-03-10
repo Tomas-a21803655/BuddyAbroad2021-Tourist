@@ -1,9 +1,17 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>tripBought</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content>
-  <ion-button href="/tabs/home"> click here</ion-button>
+    <div style="text-align: center;margin-top: 10%;padding: 10%">
+        <ion-img src="/assets/logoandname.png"></ion-img>
+        <h3 style="font: normal 20px/24px Somatic Rounded;color: #3D3D3D;margin-top: 10%">Order Complete!</h3>
+        <h4 style="font: normal 13px/16px Somatic Rounded;color: #3D3D3D;opacity: 0.72;">Have fun!</h4>
+
+        <ion-img src="/assets/shoppingCart.png"
+                 style="width: auto;height: 150px;margin-top: 5%;margin-bottom: 10%;margin-right: 4%"></ion-img>
+
+        <ion-button color="warning" class="buttons" expand="block" routerLink="/tabs/bookings">My Bookings</ion-button>
+        <ion-button color="warning" class="buttons" style="margin-top: 5%" expand="block" routerLink="/tabs/home"
+                    disabled="true">Contact Buddy
+        </ion-button>
+
+
+    </div>
 </ion-content>

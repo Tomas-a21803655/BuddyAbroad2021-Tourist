@@ -63,7 +63,7 @@ export class BuyVisitPage implements OnInit {
     async onSubmit() {
         await this.fireStorageService.buyTrip(this.savedTripId).then(
             () => {
-                this.router.navigate(['/tabs/home']);
+                this.router.navigate(['/trip-bought']);
             }
         );
     }

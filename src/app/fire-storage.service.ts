@@ -78,6 +78,7 @@ export class FireStorageService {
             .subscribe(querySnapshot => {
                 querySnapshot.forEach(doc => {
                     trips = this.getTripDetail(tripId, doc.id);
+                    // tslint:disable-next-line:no-shadowed-variable
                     trips.forEach((element: HomeTripCardsModel) => {
                         if (element?.id === tripId) {
                             trip = element;
@@ -112,8 +113,7 @@ export class FireStorageService {
                                         buddyId: trip.createdBy,
                                         status: 'Booked'
                                     };
-                                    // here
-                                    // await add active ao user tbm
+                                    // await add active ao user
                                     await this.af.collection(FireStorageService.USERS_KEY).doc(currentUser.uid)
                                         .collection('touristScheduledTrips').doc(orderTripId).set(tripToSetTourist);
                                     // abaixo add ao buddy
@@ -127,23 +127,3 @@ export class FireStorageService {
             });
     }
 }
-
-// this.db.collection('users').get()
-//             .subscribe(querySnapshot => {
-//                 querySnapshot.forEach(doc => {
-//                     this.trips = this.fireStorageService.getTripDetail(tripId, doc.id);
-//                     this.trips.forEach((element: HomeTripCardsModel) => {
-//                         if (element?.id === tripId) {
-//                             this.trip = element;
-//                             // after here
-//                             this.fireStorageService.getBuddyDocInfo(element?.createdBy).subscribe((data) => {
-//                                 this.userName = data.name;
-//                                 this.userDescription = data.description;
-//                                 this.userRating = data.rating;
-//                                 this.userImage = data.image;
-//                                 this.userLanguage = data.languages;
-//                             });
-//                         }
-//                     });
-//                 });
-//             });
