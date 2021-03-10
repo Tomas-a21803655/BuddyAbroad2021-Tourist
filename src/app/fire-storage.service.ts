@@ -32,6 +32,11 @@ export class FireStorageService {
             .collection<HomeTripCardsModel>(FireStorageService.TRIPS_KEY).doc<HomeTripCardsModel>(tripId).valueChanges();
     }
 
+    getBookedTripDetail(tripId: string, userId): Observable<any> {
+        return this.af.collection(FireStorageService.USERS_KEY).doc(userId)
+            .collection('touristScheduledTrips').doc(tripId).valueChanges();
+    }
+
     public async assignAccInfo(): Promise<void> {
         const currentUser = firebase.auth().currentUser;
         return await this.af.collection(FireStorageService.USERS_KEY).doc(currentUser.uid).set({
@@ -66,7 +71,7 @@ export class FireStorageService {
             .doc('unverified').update(desiredTrip);
     }
 
-    public getUserBookedTrips(): Observable<any>  {
+    public getUserBookedTrips(): Observable<any> {
         return this.angularAuth.user
             .pipe(takeUntil(this.unsubscribe),
                 switchMap(user => {
@@ -107,7 +112,8 @@ export class FireStorageService {
                                         participants: desiredTrip.desiredParticipants,
                                         language: desiredTrip.desiredLanguage,
                                         orderedBy: currentUser.uid,
-                                        status: 'Booked'
+                                        status: 'Booked',
+                                        id: orderTripId,
                                     };
                                     const tripToSetTourist = {
                                         orderedTripId: tripId,
@@ -120,7 +126,8 @@ export class FireStorageService {
                                         participants: desiredTrip.desiredParticipants,
                                         language: desiredTrip.desiredLanguage,
                                         buddyId: trip.createdBy,
-                                        status: 'Booked'
+                                        status: 'Booked',
+                                        id: orderTripId,
                                     };
                                     // await add active ao user
                                     await this.af.collection(FireStorageService.USERS_KEY).doc(currentUser.uid)

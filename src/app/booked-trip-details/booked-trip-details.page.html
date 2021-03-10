@@ -1,0 +1,67 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar style="color:#F0F0F0;">
+        <ion-buttons slot="start">
+            <ion-button (click)="goback()">
+                <ion-icon name="close-circle" class="close"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-img style="width: 100%" src="{{trip?.image}}"></ion-img>
+    <div style="padding: 3%">
+
+        <div style="margin-bottom: 2%">
+            <ion-text style="font:Bold 25px OpenSans-Bold;color: #3D3D3D;">{{trip?.name}}</ion-text>
+        </div>
+
+        <ion-text style="font:normal 15px OpenSans-Regular;color: #3D3D3D;">
+            {{trip?.description}}
+        </ion-text>
+
+        <div style="margin-top: 5%">
+            <ion-text style="font: normal 500 20px OpenSans-Regular;color: #3D3D3D;">About this visit:</ion-text>
+
+            <ion-grid style="width:100%;margin-top: 2%">
+                <ion-row style="position: center">
+                    <ion-col>Duration</ion-col>
+                    <ion-col>Group size</ion-col>
+                </ion-row>
+                <ion-row style="text-align:center">
+                    <ion-col class="downCol">{{trip?.time}}</ion-col>
+                    <ion-col class="downCol">{{trip?.size}}</ion-col>
+                </ion-row>
+            </ion-grid>
+            <ion-grid style="width:100%;margin-top: 2%">
+                <ion-row>
+                    <ion-col>Buddy speaks</ion-col>
+                    <ion-col>Includes</ion-col>
+                </ion-row>
+                <ion-row style="text-align:center">
+                    <ion-col class="downCol">{{this.userLanguage}}</ion-col>
+                    <ion-col class="downCol">{{trip?.details}}</ion-col>
+                </ion-row>
+            </ion-grid>
+
+        </div>
+
+        <div style="margin-top: 5%">
+            <ion-text style="font: normal 500 20px OpenSans-Regular;color: #3D3D3D;">Your Buddy</ion-text>
+        </div>
+
+        <ion-item lines="none">
+            <ion-avatar style="width: 50px;height: 50px" slot="start">
+                <img src="{{this.userImage}}">
+            </ion-avatar>
+            <ion-label style="color: #3D3D3D;padding: 2%">
+                <h3 style="font: normal 600 18px OpenSans-Regular;">{{this.userName}}<span
+                        style="font: normal 18px OpenSans-Regular;"> {{this.userRating}}</span>
+                    <ion-icon style="color: #FEAA00" name="star"></ion-icon>
+                </h3>
+                <p style="font: normal 14px OpenSans-Regular">{{this.userDescription}}</p>
+            </ion-label>
+        </ion-item>
+
+    </div>
+</ion-content>
