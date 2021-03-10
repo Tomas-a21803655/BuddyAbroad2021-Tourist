@@ -1,46 +1,49 @@
 <ion-header class="ion-no-border">
-  <ion-toolbar style="color:#F0F0F0;">
-    <div class="container">
+    <ion-toolbar style="color:#F0F0F0;">
+        <div class="container">
 
-      <div class="container__image">
-      <img  src="assets/logoandname.png">
-      </div>
+            <div class="container__image">
+                <img src="assets/logoandname.png">
+            </div>
 
-      <div class="container__text">
-      <ion-title class="ion-text-center" style="font:bold 22px OpenSans-Bold;color: #3D3D3D;">Bookings</ion-title>
-      </div>
-    </div>
+            <div class="container__text">
+                <ion-title class="ion-text-center" style="font:bold 22px OpenSans-Bold;color: #3D3D3D;">Bookings
+                </ion-title>
+            </div>
+        </div>
 
-    <ion-buttons slot="end">
-      <ion-button>
-        <ion-icon name="notifications" class="belllogo"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
+        <ion-buttons slot="end">
+            <ion-button>
+                <ion-icon name="notifications" class="belllogo"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
-<ion-input placeholder="Search for a visit"><ion-icon class="icon-search" name="search"></ion-icon></ion-input>
+<ion-input placeholder="Search for a visit">
+    <ion-icon class="icon-search" name="search"></ion-icon>
+</ion-input>
 
 <ion-content>
-  <div class="visitsNear">
-    <ion-list>
-      <ion-item *ngFor="let homeTripCard of homeTripCards" lines="none" color="white">
-        <ion-img class="visitsNear-image" [src]="homeTripCard.image"></ion-img>
-        <ion-label>
-          <h2 style="font: bold 15px OpenSans-Bold;color: #3D3D3D;">{{homeTripCard.name}}</h2>
-          <p style="font: normal 14px OpenSans-Regular;color: #3D3D3D;">{{homeTripCard.description}}</p>
-          <p>
-            <ion-chip>
-              <ion-icon class="icon" name="timer-outline"></ion-icon>
-              <ion-label class="bottom-label">{{homeTripCard.time}}</ion-label>
-            </ion-chip>
-            <ion-chip>
-              <ion-label class="bottom-label"><span style="font: normal 14px OpenSans-Regular;color: #3D3D3D;">Status</span>
-                {{homeTripCard.status}}</ion-label>
-            </ion-chip>
-          </p>
-        </ion-label>
-      </ion-item>
-    </ion-list>
-  </div>
+    <div class="visitsNear">
+        <ion-list>
+            <ion-item *ngFor="let homeTripCard of homeTripCards | async; index as i"
+                      routerLink="/visit-details/{{homeTripCard.orderedTripId}}" lines="none" color="white">
+                <ion-img class="visitsNear-image" [src]="homeTripCard.image"></ion-img>
+                <ion-label>
+                    <h2 style="font: bold 15px OpenSans-Bold;color: #3D3D3D;">{{homeTripCard.name}}</h2>
+                    <p style="font: normal 14px OpenSans-Regular;color: #3D3D3D;">{{homeTripCard.description}}</p>
+                    <p>
+                        <ion-chip>
+                            <ion-label class="bottom-label">{{homeTripCard.date}}</ion-label>
+                        </ion-chip>
+                        <ion-chip>
+                            <ion-label class="bottom-label">
+                                {{homeTripCard.status}}</ion-label>
+                        </ion-chip>
+                    </p>
+                </ion-label>
+            </ion-item>
+        </ion-list>
+    </div>
 </ion-content>
