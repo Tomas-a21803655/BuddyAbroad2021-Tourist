@@ -80,6 +80,19 @@ export class FireStorageService {
                 }));
     }
 
+    public async updateTripStatus(statusCode, tripId, buddyId) {
+        const currentUser = firebase.auth().currentUser;
+        const field = {
+            status: statusCode,
+        };
+        // buddy
+        await this.af.collection(FireStorageService.USERS_KEY).doc(buddyId)
+            .collection('buddyScheduledTrips').doc(tripId).update(field);
+        // user
+        await this.af.collection(FireStorageService.USERS_KEY).doc(currentUser.uid)
+            .collection('touristScheduledTrips').doc(tripId).update(field);
+    }
+
     public async buyTrip(tripId): Promise<void> {
         const currentUser = firebase.auth().currentUser;
         const orderTripId = this.af.createId()
