@@ -19,7 +19,7 @@
 
 <ion-content>
     <div style="padding: 3%">
-        <form [formGroup]="validationsForm">
+        <form [formGroup]="validationsForm" oninput="x.value=parseInt(participants.value)">
             <ion-item>
                 <ion-label>Date</ion-label>
                 <ion-datetime formControlName="desiredDate" min="2021" max="2025"
@@ -43,7 +43,7 @@
                         <ion-col class="downCol">
                             <ion-item>
                                 <ion-label></ion-label>
-                                <ion-input formControlName="desiredParticipants" placeholder="Participants"
+                                <ion-input id="participants" name="participants" formControlName="desiredParticipants" placeholder="Participants"
                                            type="number"></ion-input>
                             </ion-item>
                         </ion-col>
@@ -73,7 +73,7 @@
         </ion-title>
 
         <ion-title class="footerText">
-            <span style="margin-right: 2%;margin-left: 2%;font:normal 20px OpenSans-Regular;color: #3D3D3D;">Adult X x € XX</span>
+            <span style="margin-right: 2%;margin-left: 2%;font:normal 20px OpenSans-Regular;color: #3D3D3D;">Adult <output name="x">XX</output> x € XX</span>
         </ion-title>
 
         <ion-title class="footerText">
