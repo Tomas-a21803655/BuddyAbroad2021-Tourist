@@ -22,62 +22,62 @@
   height: 27px;
 }
 
-.visitsNear {
-
-}
-
-.visitsNear-header {
-  font: normal normal normal 20px Somatic Rounded;
-  letter-spacing: 1.36px;
+.pageName{
+  font: bold 23px OpenSans-Bold;
   color: #3D3D3D;
 }
 
-.visitsNear-image {
-  width: 114px;
-  height: 85px;
-  margin-right: 15px;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.icon{
-  color: #FEAA00;
-  opacity: 0.8;
-}
-
-.icon-search {
-  opacity: 0.25;
-  width: 25px;
-  height: 25px;
-  margin-left: 5px;
-}
-
-ion-item {
-  height: 105px;
+ion-card{
+  height: auto;
   border-radius: 8px;
-  margin-right: 5px;
-  margin-left: 5px;
-  margin-bottom: 12px;
+  margin: 5px 5px 15px;
+  position: relative;
+  text-align: left;
 }
 
-ion-input{
-  max-width: 98%;
-  width: 98%;
-  max-height: 34px;
-  height: 34px;
-  background: #FFFFFF;
-  border-radius: 8px;
-  margin-right: 5px;
-  margin-left: 5px;
-  margin-bottom: 5px;
+ion-img{
+  height: 150px;
+  object-fit: cover;
 }
 
-.bottom-label{
+ion-label{
   font:  normal 500 14px OpenSans-Regular;
   color: #3D3D3D;
 }
 
-.pageName{
-  font: bold 23px OpenSans-Bold;
+ion-icon{
+  color: #FEAA00;
+  opacity: 0.8;
+}
+
+ion-chip{
+  width: 30%;
+  right: 5px;
+}
+
+.price-tag{
+  font:  bold 18px OpenSans-Bold;
+  color: #474440;
+  line-height: 0px;
+}
+
+.myOverlay{
+  text-align: center;
+  width: auto;
+  padding-right: 10px;
+  padding-left: 10px;
+  height: auto;
+  position: absolute;
+  z-index: 99;
+  top: 100px;
+  right: 10px;
+  opacity: 1;
+  background: #ffffff;
+  border-radius: 10px;
+}
+
+.labelHeader{
+  font:  normal 18px OpenSans-Regular;
   color: #3D3D3D;
+  text-transform: none;
 }
