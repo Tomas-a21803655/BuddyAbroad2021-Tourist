@@ -59,22 +59,27 @@
   margin-left: 2%;
 }
 
-.visitsNear{
-
-}
-
 .visitsNear-header{
   font: normal normal normal 20px Somatic Rounded;
   letter-spacing: 1.36px;
   color: #3D3D3D;
 }
 
-.visitsNear-image{
-  width: 114px;
-  height: 85px;
-  margin-right: 15px;
-  border-radius: 10px;
-  overflow: hidden;
+ion-card{
+  height: auto;
+  border-radius: 8px;
+  margin: 5px 5px 15px;
+  position: relative;
+}
+
+ion-img{
+  height: 150px;
+  object-fit: cover;
+}
+
+ion-label{
+  font:  normal 500 14px OpenSans-Regular;
+  color: #3D3D3D;
 }
 
 ion-icon{
@@ -82,16 +87,28 @@ ion-icon{
   opacity: 0.8;
 }
 
-
-ion-label{
-  font:  normal 500 14px OpenSans-Regular;
-  color: #3D3D3D;
+ion-chip{
+  width: 30%;
+  right: 5px;
 }
 
-ion-item{
-  height: 105px;
-  border-radius: 8px;
-  margin-right: 5px;
-  margin-left: 5px;
-  margin-bottom: 12px;
+.price-tag{
+  font:  bold 20px OpenSans-Bold;
+  color: #3D3D3D;
+  line-height: 0px;
+}
+
+.myOverlay{
+  text-align: center;
+  width: auto;
+  padding-right: 10px;
+  padding-left: 10px;
+  height: auto;
+  position: absolute;
+  z-index: 99;
+  top: 100px;
+  right: 5px;
+  opacity: 1;
+  background: #ffffff;
+  border-radius: 10px;
 }

@@ -37,8 +37,27 @@
         </ion-buttons>
     </div>
 
-    <div class="visitsNear">
+    <div>
         <ion-list>
+            <ion-card *ngFor="let homeTripCard of allHomeTripCards"
+                      routerLink="/visit-details/{{homeTripCard.id}}" color="white">
+                <ion-img src="/assets/homeTripCards/boat.png"></ion-img>
+                <div class="myOverlay">
+                    <p class="price-tag">{{homeTripCard.price}} €</p>
+                </div>
+                <ion-card-header>
+                    <ion-card-title
+                            style="font: bold 20px OpenSans-Bold;color: #3D3D3D;">{{homeTripCard.name}}
+                            <ion-chip color="white">
+                                <ion-icon name="star"></ion-icon>
+                                <ion-label>{{homeTripCard.rating}}</ion-label>
+                            </ion-chip>
+                    </ion-card-title>
+                    <p style="font: normal 14px OpenSans-Regular;color: #3D3D3D;">{{homeTripCard.description}}</p>
+                </ion-card-header>
+            </ion-card>
+
+            <!-- item
             <ion-item *ngFor="let homeTripCard of allHomeTripCards"
                       routerLink="/visit-details/{{homeTripCard.id}}" lines="none" color="white">
                 <ion-img class="visitsNear-image" [src]="homeTripCard.image"></ion-img>
@@ -60,7 +79,8 @@
                         </ion-chip>
                     </p>
                 </ion-label>
-            </ion-item>
+
+            </ion-item>item-->
         </ion-list>
     </div>
 </ion-content>
