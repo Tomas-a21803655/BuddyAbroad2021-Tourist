@@ -11,6 +11,7 @@ import {HomeTripCardsModel} from '../shared/homeTripCards.model';
 })
 export class SearchPage implements OnInit {
   public allHomeTripCards: any = [];
+  public labels: any =['Local Culture','Sightseeing Tours']
 
   constructor(private router: Router, public db: AngularFirestore) {
   }
