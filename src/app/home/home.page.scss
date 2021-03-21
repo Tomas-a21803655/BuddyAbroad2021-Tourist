@@ -41,22 +41,18 @@
   position: absolute;
 }
 
-.topTrip-image {
-  width: 114px;
-  height: 85px;
-  margin-right: 15px;
-  border-radius: 8px;
+ion-slide{
+  width: 33.33%;
+  height: 100px;
+  padding-left: 2px;
+  padding-right: 2px;
+  padding-top: 10px;
 }
 
 .topTrip-header{
   font: normal normal normal 25px Somatic Rounded;
   letter-spacing: 1.36px;
   color: #3D3D3D;
-}
-
-.topTrip-cards{
-  padding: 3% 0 3% 3%;
-  margin-left: 2%;
 }
 
 .visitsNear-header{

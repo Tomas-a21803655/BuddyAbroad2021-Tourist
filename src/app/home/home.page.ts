@@ -16,6 +16,9 @@ import {map, switchMap, takeUntil} from 'rxjs/operators';
 export class HomePage implements OnInit {
 
     public allHomeTripCards: any = [];
+    slideOpts: any = {
+        slidesPerView: 3,
+    }
 
     constructor(public fireStorageService: FireStorageService, private router: Router, public db: AngularFirestore) {
     }
