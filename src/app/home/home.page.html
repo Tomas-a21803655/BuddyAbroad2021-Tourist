@@ -20,7 +20,7 @@
 </ion-header>
 <ion-content>
     <div class="topTrip">
-        <span class="topTrip-header">Top Visits Today</span>
+        <span class="topTrip-header" style="padding-top: 2px;padding-left: 2px">Top Visits Today</span>
         <ion-slides [options]="{slidesPerView: 3}">
             <ion-slide class="top-slide" *ngFor="let homeTripCard of allHomeTripCards | slice:0:6;"
                        routerLink="/visit-details/{{homeTripCard.id}}" color="white">
@@ -29,13 +29,8 @@
         </ion-slides>
     </div>
 
-    <section style="background-color: #F0F0F0">
-        <ion-buttons>
-            <span class="visitsNear-header">Visits Near You</span>
-            <ion-button size="small" slot="end">
-                <span style="color: #FEAA00;font: normal 15px OpenSans-Regular;text-align: right;">filter</span>
-            </ion-button>
-        </ion-buttons>
+    <section style="background-color: #F0F0F0;padding: 2px">
+        <span class="visitsNear-header">Visits Near You</span>
     </section>
 
     <section>

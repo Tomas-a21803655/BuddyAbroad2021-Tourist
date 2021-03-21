@@ -93,3 +93,10 @@ ion-chip{
   font:  bold 18px OpenSans-Bold;
   color: #3D3D3D;
 }
+
+ion-searchbar {
+  --box-shadow: 0;
+  --background: white;
+  --icon-color: #FEAA00;
+  --border-radius: 8px;
+}

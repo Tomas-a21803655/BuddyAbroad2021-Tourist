@@ -19,10 +19,10 @@
     </ion-toolbar>
 </ion-header>
 
+<ion-searchbar placeholder="Search" (ionInput)="filterList($event)"></ion-searchbar>
+
 <ion-content>
     <section>
-        <ion-searchbar
-                (ionInput)="filterList($event)"></ion-searchbar>
         <ion-list>
             <ion-card *ngFor="let homeTripCard of allHomeTripCards"
                       routerLink="/visit-details/{{homeTripCard.id}}" color="white">
