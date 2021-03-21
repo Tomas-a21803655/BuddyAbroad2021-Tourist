@@ -22,7 +22,7 @@
     <div class="topTrip">
         <span class="topTrip-header">Top Visits Today</span>
         <ion-slides [options]="{slidesPerView: 3}">
-            <ion-slide *ngFor="let homeTripCard of allHomeTripCards | slice:0:6;"
+            <ion-slide class="top-slide" *ngFor="let homeTripCard of allHomeTripCards | slice:0:6;"
                        routerLink="/visit-details/{{homeTripCard.id}}" color="white">
                 <img style="object-fit: cover;border-radius: 8px;" [src]="homeTripCard.image">
             </ion-slide>
@@ -39,26 +39,34 @@
     </section>
 
     <section>
-        <ion-searchbar
-                (ionInput)="filterList($event)"></ion-searchbar>
-        <ion-list>
-            <ion-card *ngFor="let homeTripCard of allHomeTripCards"
-                      routerLink="/visit-details/{{homeTripCard.id}}" color="white">
-                <ion-img [src]="homeTripCard.image"></ion-img>
-                <div class="myOverlay">
-                    <p class="price-tag">€ {{homeTripCard.price}}</p>
-                </div>
-                <ion-card-header>
-                    <ion-card-title
-                            style="font: bold 20px OpenSans-Bold;color: #3D3D3D;text-align: left">{{homeTripCard.name}}
-                        <ion-chip color="white">
-                            <ion-icon name="star"></ion-icon>
-                            <ion-label>{{homeTripCard.rating}}</ion-label>
-                        </ion-chip>
-                    </ion-card-title>
-                    <p style="font: normal 14px OpenSans-Regular;color: #3D3D3D;">{{homeTripCard.description}}</p>
-                </ion-card-header>
-            </ion-card>
+        <ion-list *ngFor="let label of labels">
+            <ion-list-header>
+                <ion-label class="labelHeader" style="text-align:left;">
+                    {{label}}<span style="float:right;margin-right: 2%">
+                    <ion-icon name="chevron-forward-outline"></ion-icon>
+    </span>
+                </ion-label>
+            </ion-list-header>
+            <ion-slides>
+                <ion-slide *ngFor="let homeTripCard of allHomeTripCards">
+                    <ion-card routerLink="/visit-details/{{homeTripCard.id}}" color="white">
+                        <ion-img [src]="homeTripCard.image"></ion-img>
+                        <div class="myOverlay">
+                            <p class="price-tag">€ {{homeTripCard.price}}</p>
+                        </div>
+                        <ion-card-header>
+                            <ion-card-title
+                                    style="font: bold 20px OpenSans-Bold;color: #3D3D3D;">{{homeTripCard.name}}
+                                <ion-chip color="white">
+                                    <ion-icon name="star"></ion-icon>
+                                    <ion-label>{{homeTripCard.rating}}</ion-label>
+                                </ion-chip>
+                            </ion-card-title>
+                            <p style="font: normal 14px OpenSans-Regular;color: #3D3D3D;">{{homeTripCard.description}}</p>
+                        </ion-card-header>
+                    </ion-card>
+                </ion-slide>
+            </ion-slides>
         </ion-list>
     </section>
 </ion-content>

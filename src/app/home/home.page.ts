@@ -18,6 +18,9 @@ export class HomePage implements OnInit {
     public allHomeTripCards: any = [];
     public allHomeTripCardsBackup: any = [];
 
+    public labels: any =['Local Culture','Sightseeing Tours']
+
+
 
 
     constructor(public fireStorageService: FireStorageService, private router: Router, public db: AngularFirestore) {
@@ -36,21 +39,6 @@ export class HomePage implements OnInit {
             });
         this.allHomeTripCardsBackup = this.allHomeTripCards;
         return this.allHomeTripCards;
-    }
-
-    async filterList(evt) {
-        this.allHomeTripCards = this.allHomeTripCardsBackup;
-        const searchTerm = evt.srcElement.value;
-
-        if (!searchTerm) {
-            return;
-        }
-
-        this.allHomeTripCards = this.allHomeTripCards.filter(currentTrip => {
-            if (currentTrip.name && searchTerm) {
-                return (currentTrip.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
-            }
-        });
     }
 
     public getTargetUserTrips(targetUser): Subscription {
