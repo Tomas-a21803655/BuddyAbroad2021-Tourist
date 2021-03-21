@@ -21,8 +21,8 @@
 <ion-content>
     <div class="topTrip">
         <span class="topTrip-header">Top Visits Today</span>
-        <ion-slides [options]="slideOpts">
-            <ion-slide *ngFor="let homeTripCard of allHomeTripCards | slice:0:3;"
+        <ion-slides [options]="{slidesPerView: 3}">
+            <ion-slide *ngFor="let homeTripCard of allHomeTripCards | slice:0:6;"
                        routerLink="/visit-details/{{homeTripCard.id}}" color="white">
                 <img style="object-fit: cover;border-radius: 8px;" [src]="homeTripCard.image">
             </ion-slide>
@@ -39,6 +39,8 @@
     </section>
 
     <section>
+        <ion-searchbar
+                (ionInput)="filterList($event)"></ion-searchbar>
         <ion-list>
             <ion-card *ngFor="let homeTripCard of allHomeTripCards"
                       routerLink="/visit-details/{{homeTripCard.id}}" color="white">
@@ -60,3 +62,4 @@
         </ion-list>
     </section>
 </ion-content>
+

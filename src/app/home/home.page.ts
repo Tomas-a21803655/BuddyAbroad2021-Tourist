@@ -16,23 +16,42 @@ import {map, switchMap, takeUntil} from 'rxjs/operators';
 export class HomePage implements OnInit {
 
     public allHomeTripCards: any = [];
-    slideOpts: any = {
-        slidesPerView: 3,
-    }
+    public allHomeTripCardsBackup: any = [];
+
+
 
     constructor(public fireStorageService: FireStorageService, private router: Router, public db: AngularFirestore) {
     }
 
     async ngOnInit() {
-        this.db.collection('users').get()
+        await this.initializeItems();
+    }
+
+    async initializeItems(): Promise<any> {
+        await this.db.collection('users').get()
             .subscribe(querySnapshot => {
                 querySnapshot.forEach(doc => {
                     this.getTargetUserTrips(doc.id);
                 });
             });
-
+        this.allHomeTripCardsBackup = this.allHomeTripCards;
+        return this.allHomeTripCards;
     }
 
+    async filterList(evt) {
+        this.allHomeTripCards = this.allHomeTripCardsBackup;
+        const searchTerm = evt.srcElement.value;
+
+        if (!searchTerm) {
+            return;
+        }
+
+        this.allHomeTripCards = this.allHomeTripCards.filter(currentTrip => {
+            if (currentTrip.name && searchTerm) {
+                return (currentTrip.name.toLowerCase().indexOf(searchTerm.toLowerCase()) > -1);
+            }
+        });
+    }
 
     public getTargetUserTrips(targetUser): Subscription {
         return this.db.collection('users').doc(targetUser).collection<HomeTripCardsModel>('createdTrips').get()
