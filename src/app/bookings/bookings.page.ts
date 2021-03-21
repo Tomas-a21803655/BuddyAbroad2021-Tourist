@@ -20,8 +20,4 @@ export class BookingsPage implements OnInit {
         this.type = 'booked';
         this.homeTripCards = this.fireStorageService.getUserBookedTrips();
     }
-
-    segmentChanged(ev: any) {
-        console.log('Segment changed', ev);
-    }
 }
