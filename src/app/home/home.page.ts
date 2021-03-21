@@ -27,14 +27,18 @@ export class HomePage implements OnInit {
                     this.getTargetUserTrips(doc.id);
                 });
             });
+
     }
 
+
     public getTargetUserTrips(targetUser): Subscription {
-      return this.db.collection('users').doc(targetUser).collection<HomeTripCardsModel>('createdTrips').get()
-          .subscribe(querySnapshot => {
-              querySnapshot.forEach(doc => {
-                  this.allHomeTripCards.push(doc.data());
-              });
-          });
+        return this.db.collection('users').doc(targetUser).collection<HomeTripCardsModel>('createdTrips').get()
+            .subscribe(querySnapshot => {
+                querySnapshot.forEach(doc => {
+                    this.allHomeTripCards.push(doc.data());
+                    this.allHomeTripCards.sort((a, b) => a.rating - b.rating); // Ascending sort
+                    this.allHomeTripCards.reverse()
+                });
+            });
     }
 }

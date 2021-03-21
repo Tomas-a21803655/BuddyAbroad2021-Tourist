@@ -21,10 +21,9 @@
 <ion-content>
     <div class="topTrip">
         <span class="topTrip-header">Top Visits Today</span>
-        <div class="topTrip-cards">
-            <img src="/assets/toptrip1.jpg" class="topTrip-image">
-            <img src="/assets/toptrip2.jpg" class="topTrip-image">
-            <img src="/assets/toptrip3.jpg" class="topTrip-image">
+        <div class="topTrip-cards" *ngFor="let homeTripCard of allHomeTripCards | slice:0:3;"
+             routerLink="/visit-details/{{homeTripCard.id}}" color="white">
+            <ion-img [src]="homeTripCard.image"></ion-img>
         </div>
     </div>
 
