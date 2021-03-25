@@ -53,8 +53,4 @@ export class BookedTripDetailsPage implements OnInit {
     goback() {
         this.navCtrl.pop();
     }
-
-    endTrip(tripId,buddyId) {
-        this.fireStorageService.updateTripStatus('Complete',tripId,buddyId);
-    }
 }

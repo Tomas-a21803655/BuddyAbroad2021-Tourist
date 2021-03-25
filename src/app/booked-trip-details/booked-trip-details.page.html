@@ -62,10 +62,5 @@
                 <p style="font: normal 14px OpenSans-Regular">{{this.userDescription}}</p>
             </ion-label>
         </ion-item>
-
-        <ion-button *ngIf="trip?.status != 'Complete'" color="warning" class="buttons" expand="block"
-                    (click)="endTrip(trip?.id,trip?.buddyId)" routerLink="/tabs/bookings">End Trip
-        </ion-button>
-
     </div>
 </ion-content>
