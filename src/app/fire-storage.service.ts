@@ -6,6 +6,7 @@ import {AngularFirestore} from '@angular/fire/firestore';
 import firebase from 'firebase';
 import {HomeTripCardsModel} from './shared/homeTripCards.model';
 import {element} from 'protractor';
+import FieldValue = firebase.firestore.FieldValue;
 
 @Injectable({
     providedIn: 'root'
@@ -146,6 +147,13 @@ export class FireStorageService {
                                     await this.af.collection(FireStorageService.USERS_KEY).doc(currentUser.uid)
                                         .collection('touristScheduledTrips').doc(orderTripId).set(tripToSetTourist);
                                     // abaixo add ao buddy
+                                    // add balance
+                                    const funds : any = trip.price * desiredTrip.desiredParticipants;
+                                    await this.af.collection(FireStorageService.USERS_KEY).doc(trip.createdBy)
+                                        .update({
+                                            earnings: firebase.firestore.FieldValue.increment(funds)
+                                        });
+                                    // assign trip
                                     return await this.af.collection(FireStorageService.USERS_KEY).doc(trip.createdBy)
                                         .collection('buddyScheduledTrips').doc(orderTripId).set(tripToSetBuddy);
                                 });
