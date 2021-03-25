@@ -19,7 +19,7 @@
 
 <ion-content>
     <div style="padding: 3%">
-        <form [formGroup]="validationsForm" oninput="x.value=parseInt(participants.value)">
+        <form [formGroup]="validationsForm">
             <ion-item>
                 <ion-label>Date</ion-label>
                 <ion-datetime formControlName="desiredDate" min="2021" max="2025"
@@ -67,19 +67,6 @@
 
 <ion-footer class="ion-no-border">
     <ion-toolbar class="footerBar" color="backgrould">
-
-        <ion-title class="footerText">
-            <span style="margin-right: 2%;margin-left: 2%;font:bold 20px OpenSans-Bold;color: #3D3D3D;">Price breakdown</span>
-        </ion-title>
-
-        <ion-title class="footerText">
-            <span style="margin-right: 2%;margin-left: 2%;font:normal 20px OpenSans-Regular;color: #3D3D3D;">Adult <output name="x">XX</output> x € XX</span>
-        </ion-title>
-
-        <ion-title class="footerText">
-            <span style="margin-right: 2%;margin-left: 2%;font:normal 20px OpenSans-Regular;color: #3D3D3D;">Order Total</span>
-        </ion-title>
-
         <ion-buttons>
             <ion-button
                     style="background-color: #FEAA00;border-radius: 24px;width: 100%;height: 40px;margin-bottom: 2%"
