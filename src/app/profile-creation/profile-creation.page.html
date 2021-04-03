@@ -9,13 +9,39 @@
 </ion-header>
 
 <ion-content>
+
+
   <form [formGroup]="validationsForm" (ngSubmit)="onSubmit(validationsForm.value)">
     <div class="avatarCard">
-      <div>
-        <ion-avatar><img src="/assets/addProfilePic.jpg"></ion-avatar>
-      </div>
-    </div>
+      <section *ngIf="!isUploading && isUploaded">
+        <div *ngIf="UploadedFileURL | async as url">
+          <ion-avatar><img [src]="url"/></ion-avatar>
+        </div>
 
+      </section>
+
+      <section>
+        <section class="ion-text-center" *ngIf="!isUploading && !isUploaded">
+          <ion-icon style="width: 35px;height: 35px;color: #3D3D3D" name="create-outline"></ion-icon>
+          <br>
+          <label style="font-family: OpenSans-Regular">Change Profile Image</label>
+          <ion-button color="white" shape="round" style="--box-shadow: none">
+            <input id="uploadBtn" type="file" class="upload" (change)="uploadFile($event.target.files)"/>
+          </ion-button>
+        </section>
+
+        <section class="ion-text-center" *ngIf="isUploading && !isUploaded">
+          <div *ngIf="percentage | async as pct">
+            Progress: {{ pct | number }}%
+            <ion-progress-bar value="{{ pct / 100 }}"></ion-progress-bar>
+          </div>
+          <div *ngIf="snapshot | async as snap">
+            File Size: {{ snap.totalBytes | fileSizePipe }} Transfered:
+            {{ snap.bytesTransferred | fileSizePipe }}
+          </div>
+        </section>
+      </section>
+    </div>
     <ion-card style="box-shadow: none;font-family: OpenSans-Regular,serif">
       <ion-card-header>
         <ion-card-title>
