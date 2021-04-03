@@ -35,7 +35,7 @@ const routes: Routes = [
         loadChildren: () => import('./plan-visit/plan-visit.module').then(m => m.PlanVisitPageModule)
     },
     {
-        path: 'profile-creation',
+        path: 'profile-creation/:user',
         loadChildren: () => import('./profile-creation/profile-creation.module').then(m => m.ProfileCreationPageModule)
     },
   {

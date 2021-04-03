@@ -16,45 +16,39 @@
       </div>
     </div>
 
-    <div class="profileName">
-      <ion-item lines="none">
-        <ion-label position="floating"
-                   style="font: bold 20px OpenSans-Bold;color: #3D3D3D;text-align: center">
-          Profile Name
-        </ion-label>
-        <ion-input style="text-align: center" type="text" formControlName="name"></ion-input>
-      </ion-item>
-    </div>
+    <ion-card style="box-shadow: none;font-family: OpenSans-Regular,serif">
+      <ion-card-header>
+        <ion-card-title>
+          <ion-item>
+            <ion-label position="stacked">Name</ion-label>
+            <ion-input formControlName="name" placeholder="{{this.user.name}}"></ion-input>
+          </ion-item>
+        </ion-card-title>
+      </ion-card-header>
 
-    <div class="profileDiscription">
-      <ion-item lines="none">
-        <ion-label position="floating" style="font: normal 15px OpenSans-Regular;color: #3D3D3D;text-align: center">
-          Description
-        </ion-label>
-        <ion-input style="text-align: center" type="text" formControlName="description"></ion-input>
-      </ion-item>
-    </div>
+      <ion-card-content>
+        <ion-item class="ion-text-wrap">
+          <ion-label position="stacked">Profile Description</ion-label>
+          <ion-input type="text" formControlName="description"
+                     placeholder="{{this.user.description}}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Country</ion-label>
+          <ion-input type="text" formControlName="home" placeholder="{{this.user.home}}"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Spoken Languages</ion-label>
+          <ion-input type="text" formControlName="languages"
+                     placeholder="{{this.user.languages}}"></ion-input>
+        </ion-item>
+      </ion-card-content>
 
-    <div class="profileInfo">
-      <p>
-        <ion-item lines="none">
-          <ion-icon style="color: black" name="location"></ion-icon>
-          <ion-label style="font: normal 15px OpenSans-Regular;color: #3D3D3D;">Lives in</ion-label>
-          <ion-input style="font: bold 15px OpenSans-Bold;color: #3D3D3D;" placeholder="home"
-                     type="text" formControlName="home"></ion-input>
-        </ion-item>
-      </p>
-      <p>
-        <ion-item lines="none">
-          <ion-icon style="color: black" name="language"></ion-icon>
-          <ion-label style="font: normal 15px OpenSans-Regular;color: #3D3D3D;">Speaks</ion-label>
-          <ion-input style="font: bold 15px OpenSans-Bold;color: #3D3D3D;" placeholder="language"
-                     type="text" formControlName="languages"></ion-input>
-        </ion-item>
-      </p>
-      <ion-button class="submit-btn" type="submit" color="warning">
-        <ion-icon style="width: 60px;height: 60px;" name="checkmark-circle-outline"></ion-icon>
-      </ion-button>
-    </div>
+      <div class="profileInfo">
+        <ion-button class="submit-btn" type="submit" color="warning">
+          <ion-icon style="text-align: center;width: 60px;height: 60px;"
+                    name="checkmark-circle-outline"></ion-icon>
+        </ion-button>
+      </div>
+    </ion-card>
   </form>
 </ion-content>

@@ -1,10 +1,8 @@
-import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
-import {HomeTripCardsModel} from '../shared/homeTripCards.model';
+import {Component, OnInit} from '@angular/core';
 import {FireStorageService} from '../fire-storage.service';
-import {NavController} from '@ionic/angular';
 import {Router} from '@angular/router';
-import {Observable} from 'rxjs';
+import firebase from 'firebase';
+import {AngularFirestore} from '@angular/fire/firestore';
 
 @Component({
   selector: 'app-profile',
@@ -13,27 +11,24 @@ import {Observable} from 'rxjs';
 })
 
 export class ProfilePage implements OnInit {
-
-  public userName;
-  public userDescription;
-  public userHome;
-  public userLanguages;
-  public userRating;
-  public userImage;
+  public user;
 
   constructor(
       public fireStorageService: FireStorageService,
-      public router: Router,
-  ) { }
+      public router: Router, public db: AngularFirestore) {
+  }
 
   ngOnInit() {
+    this.user = {
+      name: 'User',
+      description: 'Description',
+      home: 'Home',
+      languanges: 'Languages',
+      rating: '0',
+      image: '/assets/addProfilePic.jpg',
+    }
     this.fireStorageService.getUserDocInfo().subscribe((data) => {
-      this.userName = data.name;
-      this.userDescription = data.description;
-      this.userHome = data.home;
-      this.userLanguages = data.languages;
-      this.userRating = data.rating;
-      this.userImage = data.image;
+      this.user = data;
     });
   }
 

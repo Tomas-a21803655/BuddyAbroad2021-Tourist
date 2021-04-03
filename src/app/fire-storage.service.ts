@@ -69,7 +69,7 @@ export class FireStorageService {
     public async createDesiredTrip(desiredTrip): Promise<void> {
         const currentUser = firebase.auth().currentUser;
         return await this.af.collection(FireStorageService.USERS_KEY).doc(currentUser.uid).collection('unverifiedTrip')
-            .doc('unverified').update(desiredTrip);
+            .doc('unverified').set(desiredTrip);
     }
 
     public getUserBookedTrips(): Observable<any> {

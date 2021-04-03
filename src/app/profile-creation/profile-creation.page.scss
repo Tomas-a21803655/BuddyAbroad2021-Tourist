@@ -62,39 +62,11 @@ ion-avatar{
   position: absolute;
 }
 
-.starIcon{
-  width: 23px;
-  height: 23px;
-}
-
-.tripsIcon{
-  width: 23px;
-  height: 23px;
-}
-
 .align{
   display: inline-block;
 }
 
-.profileName{
-  width: 50%;
-  min-width: 300px;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.profileDiscription{
-  width: 75%;
-  min-width: 300px;
-  text-align: center;
-  margin-left: auto;
-  margin-right: auto;
-}
-
 .profileInfo{
-  width: 75%;
-  min-width: 300px;
   text-align: center;
   margin-top: 7%;
   margin-left: auto;
@@ -116,4 +88,8 @@ ion-avatar{
   opacity: 0.9;
   width: 35px;
   height: 35px;
+}
+
+ion-label {
+  color: rgb(255, 186, 0);
 }

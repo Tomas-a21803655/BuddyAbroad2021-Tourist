@@ -1,5 +1,6 @@
 .container {
   display: flex;
+
   &__image {
     margin-left: 19px;
     margin-top: 5px;
@@ -8,6 +9,7 @@
     overflow: hidden;
     float: left;
   }
+
   &__text {
     margin-top: 2%;
     margin-left: 10%;
@@ -23,15 +25,15 @@
 }
 
 
-ion-toolbar{
+ion-toolbar {
   width: 100%;
   height: 69px;
 }
 
 ion-toolbar::after {
   content: "";
-  background: linear-gradient(90deg, rgba(249,187,21,1) 0%, rgba(255,204,124,1) 100%);
-  overflow:hidden;
+  background: linear-gradient(90deg, rgba(249, 187, 21, 1) 0%, rgba(255, 204, 124, 1) 100%);
+  overflow: hidden;
   opacity: 0.5;
   top: 0;
   left: 0;
@@ -42,7 +44,7 @@ ion-toolbar::after {
   position: absolute;
 }
 
-ion-avatar{
+ion-avatar {
   width: 138px;
   height: 138px;
   margin-left: auto;
@@ -51,10 +53,10 @@ ion-avatar{
 
 .avatarCard::before {
   content: "";
-  background: linear-gradient(90deg, rgba(249,187,21,1) 0%, rgba(255,204,124,1) 100%);
+  background: linear-gradient(90deg, rgba(249, 187, 21, 1) 0%, rgba(255, 204, 124, 1) 100%);
   border-bottom-left-radius: 22px;
   border-bottom-right-radius: 22px;
-  overflow:hidden;
+  overflow: hidden;
   opacity: 0.5;
   width: 100%;
   height: 69px;
@@ -62,42 +64,22 @@ ion-avatar{
   position: absolute;
 }
 
-.starIcon{
-  width: 23px;
-  height: 23px;
+ion-item {
+  display: inline-flex;
+  width: 33.3%;
 }
 
-.tripsIcon{
-  width: 23px;
-  height: 23px;
+ion-label {
+  height: auto;
 }
 
-.align{
-  display: inline-block;
-}
-
-.profileName{
-  width: 50%;
+h2 {
   text-align: center;
-  margin-top: 2%;
-  margin-left: auto;
-  margin-right: auto;
+  color: rgb(255, 186, 0);
 }
 
-.profileDiscription{
-  width: 75%;
+p {
   text-align: center;
-  margin-top: 5%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.profileInfo{
-  width: 75%;
-  text-align: center;
-  margin-top: 7%;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 .edit-btn {
