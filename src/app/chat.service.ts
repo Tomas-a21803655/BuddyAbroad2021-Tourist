@@ -8,6 +8,8 @@ import firebase from 'firebase';
 export interface User {
   uid: string;
   email: string;
+  name?: string;
+  image?: string;
 }
 
 export interface Message {
@@ -58,7 +60,7 @@ export class ChatService {
   }
 
   addChatMessage(msg) {
-    return this.afs.collection('messages').add({
+    return this.afs.collection('messages').doc(this.currentUser.uid).collection('fromUserX').add({
       msg,
       from: this.currentUser.uid,
       createdAt: firebase.firestore.FieldValue.serverTimestamp()
@@ -92,7 +94,7 @@ export class ChatService {
   getUserForMsg(msgFromId, users: User[]): string {
     for (let usr of users) {
       if (usr.uid == msgFromId) {
-        return usr.email;
+        return usr.name;
       }
     }
     return 'Deleted';

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {NavController} from '@ionic/angular';
+import {Observable} from 'rxjs';
+import {ChatService} from '../chat.service';
 
 @Component({
   selector: 'app-messages',
@@ -8,9 +10,13 @@ import {NavController} from '@ionic/angular';
 })
 export class MessagesPage implements OnInit {
 
-  constructor(private navCtrl: NavController) { }
+  messages: Observable<any[]>;
+
+  constructor(private navCtrl: NavController,private chatService: ChatService) { }
 
   ngOnInit() {
+    this.messages = this.chatService.getChatMessages(
+    );
   }
 
   goback() {
