@@ -34,31 +34,6 @@ export class ChatService {
     });
   }
 
-  async tryRegister({ email, password }) {
-    const credential = await this.afAuth.createUserWithEmailAndPassword(
-        email,
-        password
-    );
-
-    console.log('result: ', credential);
-    const uid = credential.user.uid;
-
-    return this.afs.doc(
-        `users/${uid}`
-    ).set({
-      uid,
-      email: credential.user.email
-    });
-  }
-
-  signIn({ email, password }) {
-    return this.afAuth.signInWithEmailAndPassword(email, password);
-  }
-
-  signOut() {
-    return this.afAuth.signOut();
-  }
-
   addChatMessage(msg) {
     return this.afs.collection('messages').doc(this.currentUser.uid).collection('fromUserX').add({
       msg,
@@ -74,7 +49,8 @@ export class ChatService {
         switchMap(res => {
           users = res;
           console.log('all users: ', users);
-          return this.afs.collection('messages', ref => ref.orderBy('createdAt')).valueChanges({ idField: 'id' }) as Observable<Message[]>
+          return this.afs.collection('messages').doc(this.currentUser.uid)
+              .collection('fromUserX', ref => ref.orderBy('createdAt')).valueChanges({ idField: 'id' }) as Observable<Message[]>
         }),
         map(messages => {
           for (let m of messages) {
