@@ -46,6 +46,14 @@ const routes: Routes = [
     path: 'booked-trip-details/:id',
     loadChildren: () => import('./booked-trip-details/booked-trip-details.module').then( m => m.BookedTripDetailsPageModule)
   },
+  {
+    path: 'messages',
+    loadChildren: () => import('./messages/messages.module').then( m => m.MessagesPageModule)
+  },
+  {
+    path: 'chat',
+    loadChildren: () => import('./chat/chat.module').then( m => m.ChatPageModule)
+  },
 ];
 
 @NgModule({

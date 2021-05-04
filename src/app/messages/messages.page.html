@@ -1,0 +1,30 @@
+<ion-header class="ion-no-border">
+    <ion-toolbar style="color:#F0F0F0;">
+        <ion-buttons slot="start">
+            <ion-button (click)="goback()">
+                <ion-icon name="arrow-back-circle" class="back"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-list>
+        <ion-list-header>
+            Recent Conversations
+        </ion-list-header>
+
+        <ion-item routerLink="/chat/">
+            <ion-avatar slot="start">
+                <img src="assets/mockprofile.jpg">
+            </ion-avatar>
+            <ion-label>
+                <h2>UserXXX</h2>
+                <p>Listen, I've had a pretty messed up day...</p>
+            </ion-label>
+        </ion-item>
+
+    </ion-list>
+
+
+</ion-content>
