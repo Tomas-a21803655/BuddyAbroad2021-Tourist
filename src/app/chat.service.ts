@@ -50,8 +50,8 @@ export class ChatService {
             switchMap(res => {
                 users = res;
                 console.log('all users: ', users);
-                return this.afs.collection('messages').doc(this.currentUser.uid)
-                    .collection('fromUserX', ref => ref.orderBy('createdAt')).valueChanges({idField: 'id'}) as Observable<Message[]>
+                return this.afs.collection(this.currentUser.uid).doc('HUbWdhlA5ofpPGCu2wF3DrxVuo62')
+                    .collection('messages', ref => ref.orderBy('createdAt')).valueChanges({idField: 'id'}) as Observable<Message[]>
             }),
             map(messages => {
                 for (let m of messages) {

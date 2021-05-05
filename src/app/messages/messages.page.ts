@@ -38,15 +38,12 @@ export class MessagesPage implements OnInit {
                 querySnapshot.forEach(doc => {
                     this.fireStorageService.getUserDocInfo().subscribe((data) => {
                         this.contacts.push(data);
-                        console.log(this.contacts)
                     });
                 });
             });
         this.backupContacts = this.contacts;
         return this.contacts;
     }
-
-    //  return this.db.collection(this.currentUser.uid).doc('HUbWdhlA5ofpPGCu2wF3DrxVuo62').collection('messages').get()
 
     goback() {
         this.navCtrl.pop();
