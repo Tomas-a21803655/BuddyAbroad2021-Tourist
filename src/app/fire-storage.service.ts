@@ -56,6 +56,11 @@ export class FireStorageService {
         return this.af.collection(FireStorageService.USERS_KEY).doc(currentUser.uid).valueChanges();
     }
 
+    public getUserDocInfoForMessage(SearchId): Observable<any> {
+        const currentUser = firebase.auth().currentUser;
+        return this.af.collection(FireStorageService.USERS_KEY).doc(SearchId).valueChanges();
+    }
+
     public getBuddyDocInfo(uid): Observable<any> {
         const currentUser = firebase.auth().currentUser;
         return this.af.collection(FireStorageService.USERS_KEY).doc(uid).valueChanges();

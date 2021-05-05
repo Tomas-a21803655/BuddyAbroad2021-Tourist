@@ -14,13 +14,13 @@
             Recent Conversations
         </ion-list-header>
 
-        <ion-item  *ngFor="let message of messages | async" routerLink="/chat/">
+        <ion-item  *ngFor="let contact of contacts" routerLink="/chat/">
             <ion-avatar slot="start">
-                <img src="assets/mockprofile.jpg">
+                <img src="{{ contact.image }}">
             </ion-avatar>
             <ion-label>
-                <h2>{{ message.fromName }}</h2>
-                <p>{{ message.msg }}</p>
+                <h2>{{ contact.name }}</h2>
+                <p>message</p>
             </ion-label>
         </ion-item>
 
