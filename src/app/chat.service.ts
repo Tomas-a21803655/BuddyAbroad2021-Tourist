@@ -35,22 +35,28 @@ export class ChatService {
         });
     }
 
-    addChatMessage(msg) {
-        this.afs.collection(this.currentUser.uid).doc('HUbWdhlA5ofpPGCu2wF3DrxVuo62').set({userId: 'HUbWdhlA5ofpPGCu2wF3DrxVuo62'})
-        return this.afs.collection(this.currentUser.uid).doc('HUbWdhlA5ofpPGCu2wF3DrxVuo62').collection('messages').add({
+    addChatMessage(msg,targetUser) {
+        this.afs.collection(this.currentUser.uid).doc(targetUser).set({userId: targetUser})
+        this.afs.collection(targetUser).doc(this.currentUser.uid).set({userId: this.currentUser.uid})
+        this.afs.collection(targetUser).doc(this.currentUser.uid).collection('messages').add({
+            msg,
+            from: this.currentUser.uid,
+            createdAt: firebase.firestore.FieldValue.serverTimestamp()
+        });
+        return this.afs.collection(this.currentUser.uid).doc(targetUser).collection('messages').add({
             msg,
             from: this.currentUser.uid,
             createdAt: firebase.firestore.FieldValue.serverTimestamp()
         });
     }
 
-    getChatMessages() {
+    getChatMessages(targetId) {
         let users = [];
         return this.getUsers().pipe(
             switchMap(res => {
                 users = res;
-                console.log('all users: ', users);
-                return this.afs.collection(this.currentUser.uid).doc('HUbWdhlA5ofpPGCu2wF3DrxVuo62')
+                // console.log('all users: ', users);
+                return this.afs.collection(this.currentUser.uid).doc(targetId)
                     .collection('messages', ref => ref.orderBy('createdAt')).valueChanges({idField: 'id'}) as Observable<Message[]>
             }),
             map(messages => {
@@ -58,7 +64,7 @@ export class ChatService {
                     m.fromName = this.getUserForMsg(m.from, users);
                     m.myMsg = this.currentUser.uid === m.from;
                 }
-                console.log('all messages: ', messages);
+                // console.log('all messages: ', messages);
                 return messages;
             })
         )
