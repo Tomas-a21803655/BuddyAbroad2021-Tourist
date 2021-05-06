@@ -21,7 +21,7 @@ export class MessagesPage implements OnInit {
     currentUser = firebase.auth().currentUser;
     public contacts: any = []
     public backupContacts: any = [];
-    public userList: any = [];
+    public contactsId: any = [];
 
 
     constructor(private navCtrl: NavController, public fireStorageService: FireStorageService,
@@ -36,7 +36,8 @@ export class MessagesPage implements OnInit {
         await this.db.collection(this.currentUser.uid).get()
             .subscribe(querySnapshot => {
                 querySnapshot.forEach(doc => {
-                    this.fireStorageService.getUserDocInfo().subscribe((data) => {
+                    this.contactsId.push(doc.id)
+                    this.fireStorageService.getTargetUserDocInfo(doc.id).subscribe((data) => {
                         this.contacts.push(data);
                     });
                 });

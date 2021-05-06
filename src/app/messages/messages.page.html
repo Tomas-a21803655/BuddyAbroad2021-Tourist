@@ -14,7 +14,7 @@
             Recent Conversations
         </ion-list-header>
 
-        <ion-item  *ngFor="let contact of contacts" routerLink="/chat/">
+        <ion-item  *ngFor="let contact of contacts; index as i" routerLink="/chat/{{contactsId[i]}}">
             <ion-avatar slot="start">
                 <img src="{{ contact.image }}">
             </ion-avatar>
