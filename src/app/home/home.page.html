@@ -25,7 +25,7 @@
     <div class="topTrip">
         <span class="topTrip-header" style="padding-top: 2px;padding-left: 2px"> Top Visits Today</span>
         <ion-slides [options]="{slidesPerView: 3}">
-            <ion-slide class="top-slide" *ngFor="let homeTripCard of allHomeTripCards | slice:0:6;"
+            <ion-slide class="top-slide" *ngFor="let homeTripCard of allHomeTripCards | slice:0:3;"
                        routerLink="/visit-details/{{homeTripCard.id}}" color="white">
                 <img style="object-fit: cover;border-radius: 8px;height: 100px" [src]="homeTripCard.image">
             </ion-slide>
