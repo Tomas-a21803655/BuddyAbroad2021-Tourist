@@ -9,6 +9,8 @@ export class HomeTripCardsModel {
     public details?: string;
     public size?: number;
     public createdBy?: any;
+    public location?: any;
+
 
 
 
@@ -23,5 +25,7 @@ export class HomeTripCardsModel {
         this.details = homeTripCardsModel ? homeTripCardsModel.details : null
         this.size = homeTripCardsModel ? homeTripCardsModel.size : null;
         this.createdBy = homeTripCardsModel ? homeTripCardsModel.createdBy : null;
+        this.location = homeTripCardsModel ? homeTripCardsModel.location : null;
+
     }
 }

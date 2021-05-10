@@ -137,6 +137,7 @@ export class FireStorageService {
                                         orderedBy: currentUser.uid,
                                         status: 'Booked',
                                         id: orderTripId,
+                                        location: trip.location,
                                     };
                                     const tripToSetTourist = {
                                         orderedTripId: tripId,
@@ -151,6 +152,8 @@ export class FireStorageService {
                                         buddyId: trip.createdBy,
                                         status: 'Booked',
                                         id: orderTripId,
+                                        location: trip.location,
+
                                     };
                                     // await add active ao user
                                     await this.af.collection(FireStorageService.USERS_KEY).doc(currentUser.uid)
