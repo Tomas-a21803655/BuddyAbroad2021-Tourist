@@ -20,6 +20,7 @@ export class BookedTripDetailsPage implements OnInit {
     public userRating;
     public userImage;
     public userLanguage;
+    public userId;
 
     constructor(private router: Router, private navCtrl: NavController,
                 public fireStorageService: FireStorageService,
@@ -43,6 +44,7 @@ export class BookedTripDetailsPage implements OnInit {
                                 this.userRating = data.rating;
                                 this.userImage = data.image;
                                 this.userLanguage = data.languages;
+                                this.userId = element?.createdBy;
                             });
                         }
                     });
