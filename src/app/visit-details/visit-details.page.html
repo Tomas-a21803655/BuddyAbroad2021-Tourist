@@ -19,10 +19,6 @@
         <ion-text style="margin-bottom: 2%;font:normal 15px OpenSans-Regular;color: #3D3D3D;">
             {{trip?.description}}
         </ion-text>
-        <br>
-        <ion-text style="font:normal 15px OpenSans-Regular;color: #3D3D3D;">
-            {{trip?.location}}
-        </ion-text>
 
         <div style="margin-top: 5%">
             <ion-text style="font: normal 500 20px OpenSans-Regular;color: #3D3D3D;">About this visit:</ion-text>
@@ -49,6 +45,11 @@
             </ion-grid>
 
         </div>
+
+        <br>
+        <ion-text style="font: normal 500 20px OpenSans-Regular;color: #3D3D3D;">
+            Location: {{trip?.location}}
+        </ion-text>
 
         <div style="margin-top: 5%">
             <ion-text style="font: normal 500 20px OpenSans-Regular;color: #3D3D3D;">Your Buddy</ion-text>
@@ -85,7 +86,7 @@
             <ion-button style="background-color: #FEAA00;border-radius: 24px;width: 165px;height: 40px;"
                         routerLink="/plan-visit/{{trip?.id}}">
                 <span style="font:bold 20px OpenSans-Bold;color: #ffffff;text-transform:none;"
-                      >Book Now</span>
+                >Book Now</span>
             </ion-button>
         </ion-buttons>
     </ion-toolbar>

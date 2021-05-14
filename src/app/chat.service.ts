@@ -30,7 +30,7 @@ export class ChatService {
 
     constructor(private afAuth: AngularFireAuth, private afs: AngularFirestore) {
         this.afAuth.onAuthStateChanged(user => {
-            console.log('Changed: ', user);
+           //  console.log('Changed: ', user);
             this.currentUser = user;
         });
     }

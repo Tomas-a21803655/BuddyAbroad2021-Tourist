@@ -37,14 +37,13 @@ export class BookedTripDetailsPage implements OnInit {
                     this.trips.forEach((element: any) => {
                         if (element?.id === tripId) {
                             this.trip = element;
-                            // after here
+                            this.userId = element?.buddyId;
                             this.fireStorageService.getBuddyDocInfo(element?.buddyId).subscribe((data) => {
                                 this.userName = data.name;
                                 this.userDescription = data.description;
                                 this.userRating = data.rating;
                                 this.userImage = data.image;
                                 this.userLanguage = data.languages;
-                                this.userId = element?.createdBy;
                             });
                         }
                     });

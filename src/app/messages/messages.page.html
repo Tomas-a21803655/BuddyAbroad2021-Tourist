@@ -10,17 +10,17 @@
 
 <ion-content>
     <ion-list>
-        <ion-list-header>
-            Recent Conversations
+        <ion-list-header class="headerText">
+            Conversations
         </ion-list-header>
 
-        <ion-item  *ngFor="let contact of contacts; index as i" routerLink="/chat/{{contactsId[i]}}">
+        <ion-item *ngFor="let contact of contacts; index as i" routerLink="/chat/{{contactsId[i]}}">
             <ion-avatar slot="start">
                 <img src="{{ contact.image }}">
             </ion-avatar>
             <ion-label>
-                <h2>{{ contact.name }}</h2>
-                <p>Tap to Talk!</p>
+                <h2 class="name">{{ contact.name }}</h2>
+                <p>{{ contact.description }}</p>
             </ion-label>
         </ion-item>
 
