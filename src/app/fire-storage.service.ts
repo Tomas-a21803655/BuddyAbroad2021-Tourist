@@ -135,7 +135,7 @@ export class FireStorageService {
                                         participants: desiredTrip.desiredParticipants,
                                         language: desiredTrip.desiredLanguage,
                                         orderedBy: currentUser.uid,
-                                        status: 'Booked',
+                                        status: 'Pending',
                                         id: orderTripId,
                                         location: trip.location,
                                     };
@@ -150,7 +150,7 @@ export class FireStorageService {
                                         participants: desiredTrip.desiredParticipants,
                                         language: desiredTrip.desiredLanguage,
                                         buddyId: trip.createdBy,
-                                        status: 'Booked',
+                                        status: 'Pending',
                                         id: orderTripId,
                                         location: trip.location,
 

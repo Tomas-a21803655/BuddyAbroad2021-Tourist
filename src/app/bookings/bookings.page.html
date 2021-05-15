@@ -29,6 +29,10 @@
                 <ion-label class="labelHeader">Booked</ion-label>
                 <ion-icon name="calendar-outline"></ion-icon>
             </ion-segment-button>
+            <ion-segment-button value="pending">
+                <ion-label class="labelHeader">Pending</ion-label>
+                <ion-icon name="hourglass-outline"></ion-icon>
+            </ion-segment-button>
             <ion-segment-button value="completed">
                 <ion-label class="labelHeader">Completed</ion-label>
                 <ion-icon name="checkbox-outline"></ion-icon>
@@ -39,6 +43,27 @@
             <ion-list *ngSwitchCase="'booked'">
                 <div *ngFor="let homeTripCard of homeTripCards | async index as i">
                     <ion-card *ngIf="homeTripCard.status == 'Booked'" routerLink="/booked-trip-details/{{homeTripCard.id}}"
+                              color="white">
+                        <ion-img [src]="homeTripCard.image"></ion-img>
+                        <div class="myOverlay">
+                            <p class="price-tag">
+                                {{homeTripCard.date}} |
+                                {{homeTripCard.time}}
+                            </p>
+                        </div>
+                        <ion-card-header>
+                            <ion-card-title
+                                    style="font: bold 20px OpenSans-Bold;color: #3D3D3D;">{{homeTripCard.name}}
+                            </ion-card-title>
+                            <p style="font: normal 14px OpenSans-Regular;color: #3D3D3D;">{{homeTripCard.description}}</p>
+                        </ion-card-header>
+                    </ion-card>
+                </div>
+            </ion-list>
+
+            <ion-list *ngSwitchCase="'pending'">
+                <div *ngFor="let homeTripCard of homeTripCards | async index as i">
+                    <ion-card *ngIf="homeTripCard.status == 'Pending'" routerLink="/booked-trip-details/{{homeTripCard.id}}"
                               color="white">
                         <ion-img [src]="homeTripCard.image"></ion-img>
                         <div class="myOverlay">
