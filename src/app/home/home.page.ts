@@ -17,7 +17,6 @@ export class HomePage implements OnInit {
 
     public allHomeTripCards: any = [];
     public allHomeTripCardsBackup: any = [];
-
     public labels: any =['Local Culture','Sightseeing Tours']
 
 
@@ -39,6 +38,7 @@ export class HomePage implements OnInit {
             });
         this.allHomeTripCardsBackup = this.allHomeTripCards;
         return this.allHomeTripCards;
+        // return
     }
 
     public getTargetUserTrips(targetUser): Subscription {
